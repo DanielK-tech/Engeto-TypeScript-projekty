@@ -14,6 +14,7 @@ const hodKostkou = (): number | void => {
     kostka.src = `./img/${hozeneCislo}.jpg`;      
     /** výsledky **/ 
     const vysledek = document.createElement('p');
+    vysledek.classList.add('temporary');
     vysledek.textContent = `Hodili jste číslo: ${hozeneCislo}`;
     vysledky.appendChild(vysledek); 
     /** sčítání **/ 
@@ -21,7 +22,17 @@ const hodKostkou = (): number | void => {
    pocetHozeni += 1;
    /**Hodili jste: */ 
    pocetHodu.textContent = `Hodili jste: ${soucet}`; 
-   pocetBodu.textContent = `Počet hodů: ${pocetHozeni}`;
+   pocetBodu.textContent = `Počet hodů: ${pocetHozeni}`; 
+   /** podmínky výhry **/ 
+   if (pocetHozeni <= 4 && soucet >= 18) { 
+    const vyhra = document.createElement('h2'); 
+    vyhra.textContent = 'Vyhrál jsi!!'; 
+
+    vysledky.appendChild(vyhra); 
+    const deleteTemporary = document.querySelectorAll('.temporary'); 
+
+    deleteTemporary.forEach(element => element.remove())
+   }
 } 
 
 const vynulujVysledek = () => { 
