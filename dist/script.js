@@ -21,14 +21,20 @@ const hodKostkou = () => {
     if (pocetHozeni <= 4 && soucet >= 18) {
         const vyhra = document.createElement("h2");
         vyhra.textContent = "Vyhrál jsi!!";
+        const vyhraObrazek = document.createElement("img");
+        vyhraObrazek.src = "./img/win.gif";
         vysledky.appendChild(vyhra);
+        vysledky.appendChild(vyhraObrazek);
         const deleteTemporary = document.querySelectorAll(".temporary");
         deleteTemporary.forEach((element) => element.remove());
     }
     else if (pocetHozeni === 4 && soucet < 18) {
         const prohra = document.createElement("h2");
         prohra.textContent = "Prohrál jsi!!";
+        const prohraObrazek = document.createElement("img");
+        prohraObrazek.src = "./img/lost.gif";
         vysledky.appendChild(prohra);
+        vysledky.appendChild(prohraObrazek);
         const deleteTemporary = document.querySelectorAll(".temporary");
         deleteTemporary.forEach((element) => element.remove());
     }
