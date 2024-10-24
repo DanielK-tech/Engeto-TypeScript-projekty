@@ -132,7 +132,8 @@ header {
 /*** První container ****/
 .whisper-input {
     display: flex;
-    position: relative;
+    position: relative; 
+    height: 40px;
     gap: 10px;
 }
 
@@ -151,8 +152,9 @@ header {
 /** textový input **/
 .whisper-textInput {
     position: relative;
-    text-align: center;
-    width: 250px;
+    text-align: center; 
+    padding: 10px;
+    width: 275px;
     border-radius: 5px;
     letter-spacing: 2px;
     font-size: 1.3rem;
@@ -165,8 +167,8 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 35px;
-    height: 35px;
+    width: 55px;
+    height: 100%;
     border-radius: 5px;
     background-color: var(--white-color);
 }
