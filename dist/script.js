@@ -38,6 +38,9 @@ const hodKostkou = () => {
         const deleteTemporary = document.querySelectorAll(".temporary");
         deleteTemporary.forEach((element) => element.remove());
     }
+    if (pocetHozeni === 5) {
+        location.reload();
+    }
 };
 const vynulujVysledek = () => {
     location.reload();

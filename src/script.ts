@@ -49,7 +49,16 @@ const hodKostkou = (): number | void => {
     const deleteTemporary = document.querySelectorAll(".temporary");
 
     deleteTemporary.forEach((element) => element.remove());
-  }
+  } 
+    /** resetování po pátém hodu **/
+    if (pocetHozeni === 5) {
+        // soucet = 0;
+        // pocetHozeni = 0;
+        // pocetHodu.textContent = `Hodili jste: ${soucet}`;
+        // pocetBodu.textContent = `Počet hodů: ${pocetHozeni}`;
+        // vysledky.innerHTML = ''; 
+        location.reload();
+    }
 };
 
 const vynulujVysledek = () => {
