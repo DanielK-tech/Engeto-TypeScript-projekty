@@ -1,3 +1,4 @@
+"use strict";
 const tlacitko = document.getElementById("button") as HTMLButtonElement;
 const kostka = document.getElementById("Cube") as HTMLImageElement;
 const vynuluj = document.getElementById("zero") as HTMLButtonElement;
