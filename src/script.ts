@@ -51,12 +51,7 @@ const hodKostkou = (): number | void => {
     deleteTemporary.forEach((element) => element.remove());
   } 
     /** resetování po pátém hodu **/
-    if (pocetHozeni === 5) {
-        // soucet = 0;
-        // pocetHozeni = 0;
-        // pocetHodu.textContent = `Hodili jste: ${soucet}`;
-        // pocetBodu.textContent = `Počet hodů: ${pocetHozeni}`;
-        // vysledky.innerHTML = ''; 
+    if (pocetHozeni === 5) {         
         location.reload();
     }
 };
