@@ -3,11 +3,30 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!--Iconky-->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        />
+        <!--Načítá favicon z jiných stránek-->
+        <link
+            rel="icon"
+            type="image/png"
+            href="https://s2.googleusercontent.com/s2/favicons?domain=engeto.cz"
+        />
         <link rel="stylesheet" href="./style.css" />
         <title>Kostka</title>
     </head>
     <body>
-        <header>
+        <header> 
+          <nav id="navigace" class="navigation">
+            <ul>
+              <li><a href="#"></a></li>
+              <li><a href="#"></a></li>
+              <li><a href="#"></a></li>
+            </ul>
+          </nav> 
+          <!--Hrací kostka-->
             <section class="cube">
                 <div class="row">
                     <button id="button" class="btn">Hoď kostkou</button>
@@ -28,16 +47,23 @@
                 </div>
             </section>
         </header>
-        <main>
+        <main> 
+          <!--našeptívač-->
             <section id="Whisper" class="whisper">
                 <div class="whisper-input">
-                    <input id="Input" type="text" class="whisper-textInput" placeholder="Hledaný výraz" autocomplete="off"/>
+                    <input
+                        id="Input"
+                        type="text"
+                        class="whisper-textInput"
+                        placeholder="Hledaný výraz"
+                        autocomplete="off"
+                    />
                     <div class="whisper-searcher">
                         <div id="Search" class="whisper-search"></div>
                     </div>
-                </div> 
-                <div class="whisper-result"> 
-                  <!-- <ul>
+                </div>
+                <div class="whisper-result">
+                    <!-- <ul>
                     <li>JavaScript</li>
                     <li>CSS</li>
                     <li>HTML</li>
