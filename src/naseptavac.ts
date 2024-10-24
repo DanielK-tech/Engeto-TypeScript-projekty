@@ -10,7 +10,8 @@ const availableKeywords: string[] = [ //<= pole našeptávání
 /** Výběry */
 const input = document.getElementById('Input') as HTMLInputElement;
 const resultBox = document.querySelector('.whisper-result') as HTMLDivElement;
-
+const searchButton = document.getElementById('Search') as HTMLDivElement;
+/** vyhledávací fce  ***/
 const showAutocompleteResults = (): void => {
     if (input && resultBox) {
         let inputContent = input.value.toLowerCase(); //<= převod písmen v inputu na malé 
@@ -23,9 +24,9 @@ const showAutocompleteResults = (): void => {
         }
     }
 };
-
-const display = (array: string[]): void => { 
-    if(resultBox) { 
+/*** fce na tvoření ul a li podle nabídky slov ****/
+const display = (array: string[]): void => {
+    if (resultBox) {
         const ul = document.createElement('ul');
         array.forEach(oneItem => {
             const li = document.createElement('li');
@@ -40,6 +41,15 @@ const display = (array: string[]): void => {
         resultBox.append(ul);
     }
 }
-if (input) {
+/**************************************************** */ 
+/** fce na mazaaní obsahu z inputu  **/
+function searchClicker() {
+    if (input) {
+        input.value = ''
+    }
+}
+/******* akce  ********/
+if (input && searchButton) {
     input.addEventListener('keyup', showAutocompleteResults);
+    searchButton.addEventListener('click', searchClicker);
 }

@@ -9,6 +9,7 @@ const availableKeywords = [
 ];
 const input = document.getElementById('Input');
 const resultBox = document.querySelector('.whisper-result');
+const searchButton = document.getElementById('Search');
 const showAutocompleteResults = () => {
     if (input && resultBox) {
         let inputContent = input.value.toLowerCase();
@@ -37,6 +38,12 @@ const display = (array) => {
         resultBox.append(ul);
     }
 };
-if (input) {
+function searchClicker() {
+    if (input) {
+        input.value = '';
+    }
+}
+if (input && searchButton) {
     input.addEventListener('keyup', showAutocompleteResults);
+    searchButton.addEventListener('click', searchClicker);
 }
