@@ -1,2 +1,3 @@
-# Engeto-Hod-kostkou
-Hra hoď kostkou psaná v TS
+# Engeto-TypeScript-projekty 
+<b> Obsahuje: </b>
+1. Hra hoď kostkou psaná v TS
