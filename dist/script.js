@@ -117,29 +117,41 @@ const loading = () => {
     citationBox.hidden = true;
 };
 const hideLoading = () => {
-    loader.hidden = true;
-    citationBox.hidden = false;
+    if (!loader.hidden) {
+        loader.hidden = true;
+        citationBox.hidden = false;
+    }
 };
 const getQuote = () => {
-    fetch('https://type.fit/api/quotes')
+    loading();
+    fetch('https://zenquotes.io/api/random')
         .then(response => response.json())
         .then(data => {
-        const randomNumber = Math.floor(Math.random() * data.length);
+        const quote = data[0];
         if (citationText) {
-            citationText.textContent = data[randomNumber].text;
+            citationText.textContent = quote.q;
         }
         if (autor) {
-            if (data[randomNumber].author.includes(',')) {
-                const authorArray = data[randomNumber].author.split(',');
-                autor.textContent = authorArray[0];
-            }
-            else if (data[randomNumber].author === 'type.fit') {
-                autor.textContent = 'Autor neznámý';
-            }
-            else {
-                autor.textContent = data[randomNumber].author;
-            }
+            autor.textContent = quote.a || 'Autor neznámý';
         }
+        hideLoading();
+    })
+        .catch(error => {
+        console.error('Error fetching quote:', error);
         hideLoading();
     });
 };
+const googleSearch = () => {
+    if (citationText && autor) {
+        const quote = citationText.textContent;
+        const author = autor.textContent;
+        const url = `https://www.google.com/search?q=${quote} : ${author}`;
+        window.open(url, '_blank');
+    }
+};
+loading();
+getQuote();
+if (googleBTN && nextCitation) {
+    googleBTN.addEventListener('click', googleSearch);
+    nextCitation.addEventListener('click', getQuote);
+}
