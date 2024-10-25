@@ -21,8 +21,10 @@ const hodKostkou = () => {
     if (pocetHozeni <= 4 && soucet >= 18) {
         const vyhra = document.createElement("h2");
         vyhra.textContent = "Vyhrál jsi!!";
+        vyhra.classList.add('resultW');
         const vyhraObrazek = document.createElement("img");
         vyhraObrazek.src = "./img/win.gif";
+        vyhraObrazek.classList.add('resultW');
         vysledky.appendChild(vyhra);
         vysledky.appendChild(vyhraObrazek);
         const deleteTemporary = document.querySelectorAll(".temporary");
@@ -31,19 +33,44 @@ const hodKostkou = () => {
     else if (pocetHozeni === 4 && soucet < 18) {
         const prohra = document.createElement("h2");
         prohra.textContent = "Prohrál jsi!!";
+        prohra.classList.add('resultL');
         const prohraObrazek = document.createElement("img");
         prohraObrazek.src = "./img/lost.gif";
+        prohraObrazek.classList.add('resultL');
         vysledky.appendChild(prohra);
         vysledky.appendChild(prohraObrazek);
         const deleteTemporary = document.querySelectorAll(".temporary");
         deleteTemporary.forEach((element) => element.remove());
     }
     if (pocetHozeni === 5) {
-        location.reload();
+        resetGame();
     }
 };
+const resetGame = () => {
+    soucet = 0;
+    pocetHozeni = 0;
+    const deletePicA = document.querySelectorAll('.resultW, .resultL');
+    deletePicA.forEach((element) => {
+        const imgElement = element;
+        imgElement.remove();
+    });
+    pocetHodu.textContent = '';
+    pocetBodu.textContent = '';
+    const deleteTemporary = document.querySelectorAll(".temporary");
+    deleteTemporary.forEach((element) => element.remove());
+};
 const vynulujVysledek = () => {
-    location.reload();
+    soucet = 0;
+    pocetHozeni = 0;
+    const deletePicA = document.querySelectorAll('.resultW, .resultL');
+    deletePicA.forEach((element) => {
+        const imgElement = element;
+        imgElement.remove();
+    });
+    pocetHodu.textContent = '';
+    pocetBodu.textContent = '';
+    const deleteTemporary = document.querySelectorAll(".temporary");
+    deleteTemporary.forEach((element) => element.remove());
 };
 if (tlacitko && vynuluj) {
     tlacitko.addEventListener("click", hodKostkou);
