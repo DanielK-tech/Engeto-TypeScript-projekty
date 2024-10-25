@@ -15,18 +15,30 @@
             href="https://s2.googleusercontent.com/s2/favicons?domain=engeto.cz"
         />
         <link rel="stylesheet" href="./style.css" />
-        <title>Kostka</title>
+        <title>Projekty v TS</title>
     </head>
     <body>
-        <header> 
-          <nav id="navigace" class="navigation">
-            <ul>
-              <li><a href="#"></a></li>
-              <li><a href="#"></a></li>
-              <li><a href="#"></a></li>
-            </ul>
-          </nav> 
-          <!--Hrací kostka-->
+        <header>
+            <nav id="navigace" class="navigation">
+                <ul>
+                    <li><a href="#">Hod Kostkou</a></li>
+                    <li><a href="#">Našeptávač</a></li>
+                    <li><a href="#">Citáty</a></li>
+                </ul> 
+                <!--Vypínač-->
+                <div class="switcher-box">
+                    <span class="switcher-description">
+                        <p>Dark Mode</p>
+                        <!-- <i class="fa-solid fa-sun"></i> -->
+                        <i class="fa-solid fa-cloud-moon"></i>
+                    </span>
+                    <label class="switch"> <!--Přepínač-->
+                        <input type="checkbox" />
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+            </nav>
+            <!--Hrací kostka-->
             <section class="cube">
                 <div class="row">
                     <button id="button" class="btn">Hoď kostkou</button>
@@ -47,8 +59,8 @@
                 </div>
             </section>
         </header>
-        <main> 
-          <!--našeptívač-->
+        <main>
+            <!--našeptívač-->
             <section id="Whisper" class="whisper">
                 <div class="whisper-input">
                     <input

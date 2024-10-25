@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"); 
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Single+Day&display=swap');
 
 :root {
     --header-background: black;
@@ -11,6 +13,13 @@
     --white-color: #fff;
     --font-size: 20px;
     --searching-img: url(./img/searching.png);
+    --slider-color: #ccc;
+    --slider-active: #2196f3;
+    --navigation-background: rgba(219, 209, 209, 0.5);
+} 
+[data-theme='light']{ 
+    --header-background: rgb(255, 255, 255); 
+    --white-color: #000000;
 }
 
 * {
@@ -33,28 +42,151 @@ body {
 header {
     width: 100%;
     height: 100vh;
-    margin-top: 100px;
+}
+
+/***** navigace *****/
+.navigation {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 4.5rem;
+    background: var(--navigation-background);
+    z-index: 999;
+}
+
+.navigation ul {
+    display: flex;
+    gap: 40px;
+    width: 80%;
+    justify-content: center;
+    align-items: center;
+    z-index: 10041121;
+}
+.navigation ul li {
+    list-style: none;
+    width: -moz-fit-content;
+    width: fit-content;
+    font-size: 1.7em;
+    transition: 0.5s;
+}
+.navigation ul li a {
+    position: relative;
+    text-decoration: none;
+    color: var(--white-color);
+}
+
+.navigation ul li a::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-image: var(--btn-before);
+    filter: blur(10px);
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+}
+.navigation ul li:hover {
+    transform: scale(1.2); 
+    letter-spacing: 1px;
+}
+
+/****************** Dark mode ******/ 
+
+.switcher-box { /** container ***/
+     display: flex;
+    align-items: center;
+}
+.switcher-description {  
+    display: flex;     
+    font-family: Single Day, cursive; 
+
+} 
+.switch {
+    /* Label */
+    position: relative;
+    display: inline-block; /* flex*/
+    width: 60px;
+    height: 34px;
+} 
+
+.switcher-description p, .switcher-description i {
+    margin-right: 15px;
+    font-size: 20px;
+    
+}
+/* Hide default HTML checkbox */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+/** span **/
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--slider-color);
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+}
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: var(--white-color);
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+}
+input:checked + .slider {
+    background-color: var(--slider-active);
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px var(--slider-active);
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
 }
 
 /*********** sekce s kostkou ***********/
 .cube {
     display: flex;
     flex-direction: column-reverse;
-    align-items: center; 
+    align-items: center;
     text-align: center;
     gap: 10px;
+    margin-top: 100px;
 }
 
 .cube img {
     width: 10%;
-} 
+}
 
 @media only screen and (max-width: 600px) {
-    
-  .cube img {
-    width: 50%;
-}  
-
+    .cube img {
+        width: 50%;
+    }
 }
 
 /** tlačítko **/
@@ -124,15 +256,15 @@ header {
 
 /**                        Našeptávač                    *******/
 
-.whisper { 
-  text-align: center;
+.whisper {
+    text-align: center;
     margin-bottom: 25px;
 }
 
 /*** První container ****/
 .whisper-input {
     display: flex;
-    position: relative; 
+    position: relative;
     height: 40px;
     gap: 10px;
 }
@@ -152,7 +284,7 @@ header {
 /** textový input **/
 .whisper-textInput {
     position: relative;
-    text-align: center; 
+    text-align: center;
     padding: 10px;
     width: 275px;
     border-radius: 5px;
@@ -186,24 +318,23 @@ header {
 /*************************/
 /** *********************
      Výsledky vyhledávání 
-     ************************/ 
-.whisper-result { 
-  max-height: 300px;
-    overflow-y: scroll; 
+     ************************/
+.whisper-result {
+    max-height: 300px;
+    overflow-y: scroll;
     margin-top: 10px;
-} 
+}
 
-.whisper-result ul { 
-  
+.whisper-result ul {
     border-top: 1px solid rgb(60, 60, 60);
     padding: 15px 10px;
-} 
+}
 
 .whisper-result ul li {
     list-style-type: none;
     padding: 5px;
     cursor: pointer;
-} 
+}
 
 .whisper-result ul li:hover {
     background-color: rgb(234, 234, 234);

@@ -49,3 +49,33 @@ if (tlacitko && vynuluj) {
     tlacitko.addEventListener("click", hodKostkou);
     vynuluj.addEventListener("click", vynulujVysledek);
 }
+const switcher = document.querySelector('.switch input');
+const themeText = document.querySelector('.switcher-description p');
+const themeIcon = document.querySelector('.switcher-description i');
+const navigation = document.getElementById('navigace');
+const darkMode = () => {
+    if (themeText && themeIcon) {
+        themeText.textContent = 'Dark Mode';
+        themeIcon.classList.replace('fa-sun', 'fa-cloud-moon');
+    }
+};
+const lightMode = () => {
+    if (themeText && themeIcon) {
+        themeText.textContent = 'Light Mode';
+        themeIcon.classList.replace('fa-cloud-moon', 'fa-sun');
+    }
+};
+const switchTheme = (event) => {
+    const target = event.target;
+    if (target.checked) {
+        document.documentElement.setAttribute('data-theme', 'light');
+        lightMode();
+    }
+    else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        darkMode();
+    }
+};
+if (switcher) {
+    switcher.addEventListener('change', switchTheme);
+}
