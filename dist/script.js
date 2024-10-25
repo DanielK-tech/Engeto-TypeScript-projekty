@@ -124,20 +124,25 @@ const hideLoading = () => {
 };
 const getQuote = () => {
     loading();
-    fetch('https://zenquotes.io/api/random')
+    fetch('https://type.fit/api/quotes')
         .then(response => response.json())
         .then(data => {
-        const quote = data[0];
+        const randomNumber = Math.floor(Math.random() * data.length);
         if (citationText) {
-            citationText.textContent = quote.q;
+            citationText.textContent = data[randomNumber].text;
         }
         if (autor) {
-            autor.textContent = quote.a || 'Autor neznámý';
+            if (data[randomNumber].author.includes(',')) {
+                const authorArray = data[randomNumber].author.split(',');
+                autor.textContent = authorArray[0];
+            }
+            else if (data[randomNumber].author === 'type.fit') {
+                autor.textContent = 'Autor neznámý';
+            }
+            else {
+                autor.textContent = data[randomNumber].author;
+            }
         }
-        hideLoading();
-    })
-        .catch(error => {
-        console.error('Error fetching quote:', error);
         hideLoading();
     });
 };
