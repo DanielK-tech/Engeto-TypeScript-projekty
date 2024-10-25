@@ -15,6 +15,7 @@
             href="https://s2.googleusercontent.com/s2/favicons?domain=engeto.cz"
         />
         <link rel="stylesheet" href="./style.css" />
+        <link rel="stylesheet" href="./query.css" />
         <title>Projekty v TS</title>
     </head>
     <body>
@@ -24,7 +25,7 @@
                     <li><a href="#">Hod Kostkou</a></li>
                     <li><a href="#">Našeptávač</a></li>
                     <li><a href="#">Citáty</a></li>
-                </ul> 
+                </ul>
                 <!--Vypínač-->
                 <div class="switcher-box">
                     <span class="switcher-description">
@@ -32,7 +33,8 @@
                         <!-- <i class="fa-solid fa-sun"></i> -->
                         <i class="fa-solid fa-cloud-moon"></i>
                     </span>
-                    <label class="switch"> <!--Přepínač-->
+                    <label class="switch">
+                        <!--Přepínač-->
                         <input type="checkbox" />
                         <span class="slider round"></span>
                     </label>
@@ -69,21 +71,47 @@
                         class="whisper-textInput"
                         placeholder="Hledaný výraz"
                         autocomplete="off"
-                    /> 
+                    />
                     <div class="whisper-searcher">
                         <div id="Search" class="whisper-search"></div>
-                    </div> 
+                    </div>
                     <button id="Copy" class="copiering">Kopírovat text</button>
                 </div>
-                <p id="Warning" class="varovani">Varování! Caps lock je ZAPNUTÝ</p>
-                <div class="whisper-result">
-                    <!-- <ul>
-                    <li>JavaScript</li>
-                    <li>CSS</li>
-                    <li>HTML</li>
-                  </ul> -->
+                <p id="Warning" class="varovani">
+                    Varování! Caps lock je ZAPNUTÝ
+                </p>
+                <div class="whisper-result"></div>
+            </section>
+            <!--Sekce citáty-->
+            <section id="Citation" class="citation">
+                <div class="citation-conteiner">
+                    <div class="citation-text">
+                        <p class="citation-quote">
+                            Lorem ipsum, dolor sit amet consectetur adipisicing
+                            elit. Fuga qui nulla corporis architecto doloribus
+                            sed fugiat porro molestiae, veniam eveniet
+                            laudantium expedita repudiandae recusandae nesciunt
+                            unde iure aliquam tenetur iste.
+                        </p>
+                    </div>
+                    <!--Autor-->
+                    <div class="citation-autor">
+                        <p class="citation-name">Lorem ipsum dolor</p>
+                    </div>
+                    <!--Tlačítka-->
+                    <div class="citation-buttons">
+                        <button class="citation-btn google-btn">
+                            <i class="fa-brands fa-google"></i
+                            ><span>Najít na google</span>
+                        </button>
+                        <button class="citation-btn next-quote">
+                            Další citát
+                        </button>
+                    </div>
                 </div>
             </section>
+            <div class="loader"></div>
+            <!--Loader-->
         </main>
         <footer></footer>
         <script src="./dist/script.js"></script>

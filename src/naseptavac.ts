@@ -58,7 +58,7 @@ if (input && searchButton && copyButton) {
     copyButton.addEventListener('click', copyFunction);
 } 
 
-/*** Kontrola KapsoLoku */ 
+/*** FCE Kontrola KapsoLoku */ 
 function controling(event: KeyboardEvent) { 
     if (event.getModifierState("CapsLock")) {
         warningText.style.display = "block";
