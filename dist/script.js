@@ -106,3 +106,9 @@ const switchTheme = (event) => {
 if (switcher) {
     switcher.addEventListener('change', switchTheme);
 }
+const citationBox = document.getElementById('Quote-box');
+const citationText = document.querySelector('.citation-quote');
+const autor = document.querySelector('.citation-name');
+const googleBTN = document.querySelector('.google-btn');
+const nextCitation = document.querySelector('.next-quote');
+const loader = document.getElementById('Loader');

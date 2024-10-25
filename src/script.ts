@@ -135,4 +135,16 @@ const switchTheme = (event: Event) => {
 /** Akce  ***/
 if (switcher) {
   switcher.addEventListener('change', switchTheme);
-}
+} 
+/********************************************************************************************** */ 
+/********************************************************************************************** */ 
+
+/************************* Citáty ******** */ 
+const citationBox = document.getElementById('Quote-box') as HTMLDivElement;
+const citationText = document.querySelector<HTMLParagraphElement>('.citation-quote'); 
+const autor = document.querySelector<HTMLParagraphElement>('.citation-name');
+const googleBTN = document.querySelector<HTMLButtonElement>('.google-btn'); 
+const nextCitation = document.querySelector('.next-quote') as HTMLButtonElement;
+const loader = document.getElementById('Loader') as HTMLDivElement; 
+
+

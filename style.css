@@ -265,7 +265,7 @@ input:checked + .slider:before {
 
 /**                        Našeptávač                    *******/
 
-.whisper {    
+.whisper {
     margin-bottom: 25px;
 }
 
@@ -456,6 +456,7 @@ input:checked + .slider:before {
     width: 100px;
     height: 100px;
     animation: loader-rotation 2.5s linear infinite;
+    display: none;
 }
 @keyframes loader-rotation {
     0% {
