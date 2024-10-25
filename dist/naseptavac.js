@@ -11,6 +11,7 @@ const input = document.getElementById('Input');
 const resultBox = document.querySelector('.whisper-result');
 const searchButton = document.getElementById('Search');
 const warningText = document.getElementById('Warning');
+const copyButton = document.getElementById('Copy');
 const showAutocompleteResults = () => {
     if (input && resultBox) {
         let inputContent = input.value.toLowerCase();
@@ -44,10 +45,11 @@ function searchClicker() {
         input.value = '';
     }
 }
-if (input && searchButton) {
+if (input && searchButton && copyButton) {
     input.addEventListener('keyup', showAutocompleteResults);
     searchButton.addEventListener('click', searchClicker);
     input.addEventListener('keyup', controling);
+    copyButton.addEventListener('click', copyFunction);
 }
 function controling(event) {
     if (event.getModifierState("CapsLock")) {
@@ -56,4 +58,11 @@ function controling(event) {
     else {
         warningText.style.display = "none";
     }
+}
+function copyFunction() {
+    const copyText = input;
+    copyText.select();
+    copyText.setSelectionRange(0, 99999);
+    navigator.clipboard.writeText(copyText.value);
+    alert("Copied the text: " + copyText.value);
 }

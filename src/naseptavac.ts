@@ -11,7 +11,8 @@ const availableKeywords: string[] = [ //<= pole našeptávání
 const input = document.getElementById('Input') as HTMLInputElement;
 const resultBox = document.querySelector('.whisper-result') as HTMLDivElement;
 const searchButton = document.getElementById('Search') as HTMLDivElement; 
-const warningText = document.getElementById('Warning') as HTMLParagraphElement;
+const warningText = document.getElementById('Warning') as HTMLParagraphElement; 
+const copyButton = document.getElementById('Copy') as HTMLButtonElement;
 /** vyhledávací fce  ***/
 const showAutocompleteResults = (): void => {
     if (input && resultBox) {
@@ -50,10 +51,11 @@ function searchClicker():void {
     }
 }
 /******* akce  ********/
-if (input && searchButton) {
+if (input && searchButton && copyButton) {
     input.addEventListener('keyup', showAutocompleteResults);
     searchButton.addEventListener('click', searchClicker); 
-    input.addEventListener('keyup', controling)
+    input.addEventListener('keyup', controling) 
+    copyButton.addEventListener('click', copyFunction);
 } 
 
 /*** Kontrola KapsoLoku */ 
@@ -63,4 +65,18 @@ function controling(event: KeyboardEvent) {
     } else {
         warningText.style.display = "none"
     }
+} 
+
+/*** fce na tlačítko kopírovat *******/ 
+function copyFunction():void { 
+    const copyText = input as HTMLInputElement; 
+    // Select the text field
+    copyText.select();
+    copyText.setSelectionRange(0, 99999); // For mobile devices 
+    // Copy the text inside the text field
+    navigator.clipboard.writeText(copyText.value); 
+    // Alert the copied text
+    alert("Copied the text: " + copyText.value);
+
+
 }
