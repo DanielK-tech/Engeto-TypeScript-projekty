@@ -112,3 +112,34 @@ const autor = document.querySelector('.citation-name');
 const googleBTN = document.querySelector('.google-btn');
 const nextCitation = document.querySelector('.next-quote');
 const loader = document.getElementById('Loader');
+const loading = () => {
+    loader.hidden = false;
+    citationBox.hidden = true;
+};
+const hideLoading = () => {
+    loader.hidden = true;
+    citationBox.hidden = false;
+};
+const getQuote = () => {
+    fetch('https://type.fit/api/quotes')
+        .then(response => response.json())
+        .then(data => {
+        const randomNumber = Math.floor(Math.random() * data.length);
+        if (citationText) {
+            citationText.textContent = data[randomNumber].text;
+        }
+        if (autor) {
+            if (data[randomNumber].author.includes(',')) {
+                const authorArray = data[randomNumber].author.split(',');
+                autor.textContent = authorArray[0];
+            }
+            else if (data[randomNumber].author === 'type.fit') {
+                autor.textContent = 'Autor neznámý';
+            }
+            else {
+                autor.textContent = data[randomNumber].author;
+            }
+        }
+        hideLoading();
+    });
+};

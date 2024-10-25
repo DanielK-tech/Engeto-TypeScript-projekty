@@ -145,6 +145,39 @@ const citationText = document.querySelector<HTMLParagraphElement>('.citation-quo
 const autor = document.querySelector<HTMLParagraphElement>('.citation-name');
 const googleBTN = document.querySelector<HTMLButtonElement>('.google-btn'); 
 const nextCitation = document.querySelector('.next-quote') as HTMLButtonElement;
-const loader = document.getElementById('Loader') as HTMLDivElement; 
+const loader = document.getElementById('Loader') as HTMLDivElement;  
 
+/**FCE na loader  ****/
+const loading = (): void => {
+  loader.hidden = false;
+  citationBox.hidden = true;
+} 
+// Hide loader
+const hideLoading = (): void => {
+  loader.hidden = true;
+  citationBox.hidden = false;
+}
 
+/*** FCE na získání API ***/
+// API
+const getQuote = (): void => {
+  fetch('https://type.fit/api/quotes')
+    .then(response => response.json())
+    .then(data => {
+      const randomNumber = Math.floor(Math.random() * data.length);
+      if (citationText) {
+        citationText.textContent = data[randomNumber].text;
+      }
+      if (autor) {
+        if (data[randomNumber].author.includes(',')) {
+          const authorArray = data[randomNumber].author.split(',');
+          autor.textContent = authorArray[0];
+        } else if (data[randomNumber].author === 'type.fit') {
+          autor.textContent = 'Autor neznámý';
+        } else {
+          autor.textContent = data[randomNumber].author;
+        }
+      }
+      hideLoading();
+    });
+}
