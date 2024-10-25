@@ -15,7 +15,8 @@
     --searching-img: url(./img/searching.png);
     --slider-color: #ccc;
     --slider-active: #2196f3;
-    --navigation-background: rgba(219, 209, 209, 0.5);
+    --navigation-background: rgba(219, 209, 209, 0.5); 
+    --red-color: red;
 } 
 [data-theme='light']{ 
     --header-background: rgb(255, 255, 255); 
@@ -338,4 +339,9 @@ input:checked + .slider:before {
 
 .whisper-result ul li:hover {
     background-color: rgb(234, 234, 234);
+} 
+/** varovná správa **/ 
+.varovani { 
+    display: none; 
+    color: var(--red-color);
 }

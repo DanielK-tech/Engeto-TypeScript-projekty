@@ -10,6 +10,7 @@ const availableKeywords = [
 const input = document.getElementById('Input');
 const resultBox = document.querySelector('.whisper-result');
 const searchButton = document.getElementById('Search');
+const warningText = document.getElementById('Warning');
 const showAutocompleteResults = () => {
     if (input && resultBox) {
         let inputContent = input.value.toLowerCase();
@@ -46,4 +47,13 @@ function searchClicker() {
 if (input && searchButton) {
     input.addEventListener('keyup', showAutocompleteResults);
     searchButton.addEventListener('click', searchClicker);
+    input.addEventListener('keyup', controling);
+}
+function controling(event) {
+    if (event.getModifierState("CapsLock")) {
+        warningText.style.display = "block";
+    }
+    else {
+        warningText.style.display = "none";
+    }
 }

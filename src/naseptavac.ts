@@ -10,7 +10,8 @@ const availableKeywords: string[] = [ //<= pole našeptávání
 /** Výběry */
 const input = document.getElementById('Input') as HTMLInputElement;
 const resultBox = document.querySelector('.whisper-result') as HTMLDivElement;
-const searchButton = document.getElementById('Search') as HTMLDivElement;
+const searchButton = document.getElementById('Search') as HTMLDivElement; 
+const warningText = document.getElementById('Warning') as HTMLParagraphElement;
 /** vyhledávací fce  ***/
 const showAutocompleteResults = (): void => {
     if (input && resultBox) {
@@ -43,7 +44,7 @@ const display = (array: string[]): void => {
 }
 /**************************************************** */ 
 /** fce na mazaaní obsahu z inputu  **/
-function searchClicker() {
+function searchClicker():void {
     if (input) {
         input.value = ''
     }
@@ -51,5 +52,15 @@ function searchClicker() {
 /******* akce  ********/
 if (input && searchButton) {
     input.addEventListener('keyup', showAutocompleteResults);
-    searchButton.addEventListener('click', searchClicker);
+    searchButton.addEventListener('click', searchClicker); 
+    input.addEventListener('keyup', controling)
+} 
+
+/*** Kontrola KapsoLoku */ 
+function controling(event: KeyboardEvent) { 
+    if (event.getModifierState("CapsLock")) {
+        warningText.style.display = "block";
+    } else {
+        warningText.style.display = "none"
+    }
 }
