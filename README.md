@@ -1,4 +1,4 @@
 # Engeto-TypeScript-projekty 
 <b> Obsahuje: </b>
 1. Hra hoď kostkou psaná v TS
-2. Našeptávač slov
+2. Našeptávač slov + KapsLocková kontrola + kopírování textu z inputu
