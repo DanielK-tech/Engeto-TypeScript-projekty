@@ -145,7 +145,51 @@ const citationText = document.querySelector<HTMLParagraphElement>('.citation-quo
 const autor = document.querySelector<HTMLParagraphElement>('.citation-name');
 const googleBTN = document.querySelector<HTMLButtonElement>('.google-btn'); 
 const nextCitation = document.querySelector('.next-quote') as HTMLButtonElement;
-const loader = document.getElementById('Loader') as HTMLDivElement;  
+const loader = document.getElementById('Loader') as HTMLDivElement;   
+
+// Pole citátů a autorů
+const quotes = [ 
+  { 
+    text: 'Kdo chce, hledá způsob. Kdo nechce, hledá důvod', 
+    author: 'Jan Werich'
+  },
+  { 
+    text: 'Pokud máš odvahu říci „sbohem“, život tě obdaří novým „vítej“.', 
+    author: 'Paulo Coelho'
+  },
+  { 
+    text: 'Odolám všemu kromě pokušení.', 
+    author: 'Oscar Wilde'
+  },
+  { 
+    text: 'Svět je jeviště, ale hra je špatně obsazená.', 
+    author: 'Oscar Wilde'
+  },
+  { 
+    text: 'Nechápu, proč by člověk neměl být stejně krutý jako příroda.', 
+    author: 'Adolf Hitler'
+  },
+  { 
+    text: 'Jednoho dne mi bylo jasné, že bych se chtěl stát malířem, akademickým malířem.', 
+    author: 'Adolf Hitler'
+  },
+  { 
+    text: 'Schengen není funkční, upřednostňuji státní hranice. Dotace nechávejte u brány', 
+    author: 'Andrej Babiš'
+  },
+  { 
+    text: 'Ve vztahu k ďáblům se lidé mohou dopustit dvou stejně závažných chyb. První z nich by bylo nevěřit v jejich existenci. Druhou chybou je v ně věřit.', 
+    author: 'C. S. Lewis'
+  },
+  { 
+    text: 'Osvícení je prázdno mezi myšlenkami.', 
+    author: 'Eckhart Tolle'
+  },
+  { 
+    text: 'Když se dostanete do souboje, musíte nepříteli dát pocítit, že prohrává, a to za pomocí čehokoli, co máte zrovna k dispozici.', 
+    author: 'Winston Churchill'
+  }
+]
 
 /**FCE na loader  ****/
 const loading = (): void => {
@@ -162,27 +206,18 @@ const hideLoading = (): void => {
 
 /*** FCE na získání API ***/
 // API
-const getQuote = (): void => { 
+const getQuote = (): void => {
   loading();
-  fetch('https://type.fit/api/quotes')
-    .then(response => response.json())
-    .then(data => {
-      const randomNumber = Math.floor(Math.random() * data.length);
-      if (citationText) {
-        citationText.textContent = data[randomNumber].text;
-      }
-      if (autor) {
-        if (data[randomNumber].author.includes(',')) {
-          const authorArray = data[randomNumber].author.split(',');
-          autor.textContent = authorArray[0];
-        } else if (data[randomNumber].author === 'type.fit') {
-          autor.textContent = 'Autor neznámý';
-        } else {
-          autor.textContent = data[randomNumber].author;
-        }
-      }
-      hideLoading();
-    });
+  setTimeout(() => {
+    const randomNumber = Math.floor(Math.random() * quotes.length);
+    if (citationText) {
+      citationText.textContent = quotes[randomNumber].text;
+    }
+    if (autor) {
+      autor.textContent = quotes[randomNumber].author;
+    }
+    hideLoading();
+  }, 3000); // Zobrazení loaderu na 3 sekundy
 } 
 
 /** FCE na google tlačítko */ 
