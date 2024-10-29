@@ -76,6 +76,37 @@ if (tlacitko && vynuluj) {
     tlacitko.addEventListener("click", hodKostkou);
     vynuluj.addEventListener("click", vynulujVysledek);
 }
+const firtSection = document.getElementById('FirstSection');
+const secondSection = document.getElementById('SecondSection');
+const thirdSection = document.getElementById('ThirdSection');
+const cubeSection = document.getElementById('Cube');
+const whisperSection = document.getElementById('Whisper');
+const quoteSection = document.getElementById('Citation');
+const sections = [
+    { link: 'FirstSection', target: 'Cube' },
+    { link: 'SecondSection', target: 'Whisper' },
+    { link: 'ThirdSection', target: 'Citation' }
+];
+const elements = sections.map(section => ({
+    link: document.getElementById(section.link),
+    target: document.getElementById(section.target)
+}));
+const scrollToSection = (e, target) => {
+    e.preventDefault();
+    if (target) {
+        const offset = window.innerHeight * 0.15;
+        const targetPosition = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({
+            top: targetPosition,
+            behavior: "smooth",
+        });
+    }
+};
+elements.forEach(({ link, target }) => {
+    if (link && target) {
+        link.addEventListener('click', (e) => scrollToSection(e, target));
+    }
+});
 const switcher = document.querySelector('.switch input');
 const themeText = document.querySelector('.switcher-description p');
 const themeIcon = document.querySelector('.switcher-description i');
@@ -155,13 +186,13 @@ const quotes = [
     }
 ];
 const loading = () => {
-    loader.hidden = false;
-    citationBox.hidden = true;
+    loader.style.display = 'block';
+    citationBox.style.display = 'none';
 };
 const hideLoading = () => {
-    if (!loader.hidden) {
-        loader.hidden = true;
-        citationBox.hidden = false;
+    if (loader.style.display === 'block') {
+        loader.style.display = 'none';
+        citationBox.style.display = 'block';
     }
 };
 const getQuote = () => {

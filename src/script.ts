@@ -27,7 +27,7 @@ const hodKostkou = (): number | void => {
   /** podmínky výhry **/
   if (pocetHozeni <= 4 && soucet >= 18) {
     const vyhra = document.createElement("h2");
-    vyhra.textContent = "Vyhrál jsi!!"; 
+    vyhra.textContent = "Vyhrál jsi!!";
     vyhra.classList.add('resultW')
 
     const vyhraObrazek = document.createElement("img");
@@ -40,11 +40,11 @@ const hodKostkou = (): number | void => {
     deleteTemporary.forEach((element) => element.remove());
   } else if (pocetHozeni === 4 && soucet < 18) {
     const prohra = document.createElement("h2");
-    prohra.textContent = "Prohrál jsi!!"; 
+    prohra.textContent = "Prohrál jsi!!";
     prohra.classList.add('resultL')
 
     const prohraObrazek = document.createElement("img");
-    prohraObrazek.src = "./img/lost.gif"; 
+    prohraObrazek.src = "./img/lost.gif";
     prohraObrazek.classList.add('resultL');
 
     vysledky.appendChild(prohra);
@@ -57,25 +57,25 @@ const hodKostkou = (): number | void => {
   if (pocetHozeni === 5) {
     resetGame();
   }
-}; 
+};
 /*** fce na resetování hry ***/
 const resetGame = (): void => {
   soucet = 0;
-  pocetHozeni = 0;  
+  pocetHozeni = 0;
 
-  const deletePicA = document.querySelectorAll('.resultW, .resultL');   
+  const deletePicA = document.querySelectorAll('.resultW, .resultL');
   deletePicA.forEach((element) => {
     const imgElement = element;
     imgElement.remove();
-  }); 
-  
+  });
+
   pocetHodu.textContent = '';
   pocetBodu.textContent = '';
   const deleteTemporary = document.querySelectorAll(".temporary");
   deleteTemporary.forEach((element) => element.remove());
 };
 
-const vynulujVysledek = () => {  
+const vynulujVysledek = () => {
   soucet = 0;
   pocetHozeni = 0;
 
@@ -94,8 +94,97 @@ const vynulujVysledek = () => {
 if (tlacitko && vynuluj) {
   tlacitko.addEventListener("click", hodKostkou);
   vynuluj.addEventListener("click", vynulujVysledek);
-}
+} 
+/************************************************************************************************** */ 
+/****************************************************************************************************                
+ *                                      Navigace
+ ****************************************************************************************************/
+const firtSection = document.getElementById('FirstSection') as HTMLAnchorElement;
+const secondSection = document.getElementById('SecondSection') as HTMLAnchorElement;
+const thirdSection = document.getElementById('ThirdSection') as HTMLAnchorElement;  
+//sekce 
+const cubeSection = document.getElementById('Cube') as HTMLElement; 
+const whisperSection = document.getElementById('Whisper') as HTMLElement; 
+const quoteSection = document.getElementById('Citation') as HTMLElement; 
 
+/** Fce na přesun zjednodušená */ 
+const sections = [
+  { link: 'FirstSection', target: 'Cube' },
+  { link: 'SecondSection', target: 'Whisper' },
+  { link: 'ThirdSection', target: 'Citation' }
+];
+
+const elements = sections.map(section => ({
+  link: document.getElementById(section.link) as HTMLAnchorElement,
+  target: document.getElementById(section.target) as HTMLElement
+}));
+
+const scrollToSection = (e: Event, target: HTMLElement): void => {
+  e.preventDefault();
+  if (target) {
+    const offset = window.innerHeight * 0.15;
+    const targetPosition = target.getBoundingClientRect().top + window.scrollY - offset;
+    window.scrollTo({
+      top: targetPosition,
+      behavior: "smooth",
+    });
+  }
+};
+
+elements.forEach(({ link, target }) => {
+  if (link && target) {
+    link.addEventListener('click', (e) => scrollToSection(e, target));
+  }
+});
+
+
+/**První sekce */ 
+
+// const cubeRoll = (e: any): void => { 
+//   e.preventDefault(); 
+//   if(cubeSection) { 
+//     const offset = window.innerHeight * 0.15;
+//     const targetPosition =
+//       cubeSection.getBoundingClientRect().top + window.scrollY - offset;
+//     window.scrollTo({
+//       top: targetPosition,
+//       behavior: "smooth",
+//     });
+//   }
+// }
+
+// /**Druhá sekce */
+// const whisperRoll = (e: any): void => {
+//   e.preventDefault();
+//   if (whisperSection) {
+//     const offset = window.innerHeight * 0.15;
+//     const targetPosition =
+//       whisperSection.getBoundingClientRect().top + window.scrollY - offset;
+//     window.scrollTo({
+//       top: targetPosition,
+//       behavior: "smooth",
+//     });
+//   }
+// }
+// /**Třetí sekce */
+// const quoteRoll = (e: any): void => {
+//   e.preventDefault();
+//   if (quoteSection) {
+//     const offset = window.innerHeight * 0.15;
+//     const targetPosition =
+//       quoteSection.getBoundingClientRect().top + window.scrollY - offset;
+//     window.scrollTo({
+//       top: targetPosition,
+//       behavior: "smooth",
+//     });
+//   }
+// } 
+// //
+// if( firtSection && secondSection && thirdSection) { 
+//   firtSection.addEventListener('click', cubeRoll);
+//   secondSection.addEventListener('click', whisperRoll);
+//   thirdSection.addEventListener('click', quoteRoll);
+// }
 /****************************************************************************************************** 
  * ***************************************************************************************************
  */
@@ -135,72 +224,73 @@ const switchTheme = (event: Event) => {
 /** Akce  ***/
 if (switcher) {
   switcher.addEventListener('change', switchTheme);
-} 
-/********************************************************************************************** */ 
-/********************************************************************************************** */ 
+}
+/********************************************************************************************** */
+/********************************************************************************************** */
 
-/************************* Citáty ******** */ 
+/************************* Citáty ******** */
 const citationBox = document.getElementById('Quote-box') as HTMLDivElement;
-const citationText = document.querySelector<HTMLParagraphElement>('.citation-quote'); 
+const citationText = document.querySelector<HTMLParagraphElement>('.citation-quote');
 const autor = document.querySelector<HTMLParagraphElement>('.citation-name');
-const googleBTN = document.querySelector<HTMLButtonElement>('.google-btn'); 
+const googleBTN = document.querySelector<HTMLButtonElement>('.google-btn');
 const nextCitation = document.querySelector('.next-quote') as HTMLButtonElement;
-const loader = document.getElementById('Loader') as HTMLDivElement;   
+const loader = document.getElementById('Loader') as HTMLDivElement;
 
 // Pole citátů a autorů
-const quotes = [ 
-  { 
-    text: 'Kdo chce, hledá způsob. Kdo nechce, hledá důvod', 
+const quotes = [
+  {
+    text: 'Kdo chce, hledá způsob. Kdo nechce, hledá důvod',
     author: 'Jan Werich'
   },
-  { 
-    text: 'Pokud máš odvahu říci „sbohem“, život tě obdaří novým „vítej“.', 
+  {
+    text: 'Pokud máš odvahu říci „sbohem“, život tě obdaří novým „vítej“.',
     author: 'Paulo Coelho'
   },
-  { 
-    text: 'Odolám všemu kromě pokušení.', 
+  {
+    text: 'Odolám všemu kromě pokušení.',
     author: 'Oscar Wilde'
   },
-  { 
-    text: 'Svět je jeviště, ale hra je špatně obsazená.', 
+  {
+    text: 'Svět je jeviště, ale hra je špatně obsazená.',
     author: 'Oscar Wilde'
   },
-  { 
-    text: 'Nechápu, proč by člověk neměl být stejně krutý jako příroda.', 
+  {
+    text: 'Nechápu, proč by člověk neměl být stejně krutý jako příroda.',
     author: 'Adolf Hitler'
   },
-  { 
-    text: 'Jednoho dne mi bylo jasné, že bych se chtěl stát malířem, akademickým malířem.', 
+  {
+    text: 'Jednoho dne mi bylo jasné, že bych se chtěl stát malířem, akademickým malířem.',
     author: 'Adolf Hitler'
   },
-  { 
-    text: 'Schengen není funkční, upřednostňuji státní hranice. Dotace nechávejte u brány', 
+  {
+    text: 'Schengen není funkční, upřednostňuji státní hranice. Dotace nechávejte u brány',
     author: 'Andrej Babiš'
   },
-  { 
-    text: 'Ve vztahu k ďáblům se lidé mohou dopustit dvou stejně závažných chyb. První z nich by bylo nevěřit v jejich existenci. Druhou chybou je v ně věřit.', 
+  {
+    text: 'Ve vztahu k ďáblům se lidé mohou dopustit dvou stejně závažných chyb. První z nich by bylo nevěřit v jejich existenci. Druhou chybou je v ně věřit.',
     author: 'C. S. Lewis'
   },
-  { 
-    text: 'Osvícení je prázdno mezi myšlenkami.', 
+  {
+    text: 'Osvícení je prázdno mezi myšlenkami.',
     author: 'Eckhart Tolle'
   },
-  { 
-    text: 'Když se dostanete do souboje, musíte nepříteli dát pocítit, že prohrává, a to za pomocí čehokoli, co máte zrovna k dispozici.', 
+  {
+    text: 'Když se dostanete do souboje, musíte nepříteli dát pocítit, že prohrává, a to za pomocí čehokoli, co máte zrovna k dispozici.',
     author: 'Winston Churchill'
   }
 ]
 
 /**FCE na loader  ****/
+
 const loading = (): void => {
-  loader.hidden = false;
-  citationBox.hidden = true;
-} 
-// Hide loader
-const hideLoading = (): void => { 
-  if(!loader.hidden){ 
-    loader.hidden = true;
-    citationBox.hidden = false;
+  loader.style.display = 'block';
+  citationBox.style.display = 'none';
+}
+
+const hideLoading = (): void => {
+  if (loader.style.display === 'block') {
+    loader.style.display = 'none';
+    citationBox.style.display = 'block';
   }
 }
 
@@ -218,22 +308,22 @@ const getQuote = (): void => {
     }
     hideLoading();
   }, 3000); // Zobrazení loaderu na 3 sekundy
-} 
+}
 
-/** FCE na google tlačítko */ 
-const googleSearch = (): void => { 
-  if(citationText && autor) { 
+/** FCE na google tlačítko */
+const googleSearch = (): void => {
+  if (citationText && autor) {
     const quote = citationText.textContent;
     const author = autor.textContent;
     const url = `https://www.google.com/search?q=${quote} : ${author}`;
     window.open(url, '_blank');
   }
-}  
+}
 /**Před akcí **/
-loading() 
+loading()
 getQuote()
-/**** Akce ****/ 
-if(googleBTN && nextCitation) { 
-  googleBTN.addEventListener('click', googleSearch); 
+/**** Akce ****/
+if (googleBTN && nextCitation) {
+  googleBTN.addEventListener('click', googleSearch);
   nextCitation.addEventListener('click', getQuote);
 }

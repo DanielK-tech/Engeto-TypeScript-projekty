@@ -384,6 +384,7 @@ input:checked + .slider:before {
     padding-top: 50px;
     min-height: 30vh;
     flex: 1;
+    width: 80%;
 }
 
 /**conatiner**/
@@ -392,9 +393,10 @@ input:checked + .slider:before {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+    flex-direction: column; 
+    text-align: center;
     margin: 0 auto;
-    width: 50%;
+    min-width: 50%;
     padding: 10px;
     border-radius: 5px;
     box-shadow: 0px 0px 15px rgb(241, 31, 3);
@@ -404,8 +406,8 @@ input:checked + .slider:before {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 50px; 
-    min-width: 100%;
+    min-height: 50px;
+    max-width: 100%;
     text-align: center;
 }
 /** citat*/
