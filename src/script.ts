@@ -94,20 +94,20 @@ const vynulujVysledek = () => {
 if (tlacitko && vynuluj) {
   tlacitko.addEventListener("click", hodKostkou);
   vynuluj.addEventListener("click", vynulujVysledek);
-} 
-/************************************************************************************************** */ 
+}
+/************************************************************************************************** */
 /****************************************************************************************************                
  *                                      Navigace
  ****************************************************************************************************/
 const firtSection = document.getElementById('FirstSection') as HTMLAnchorElement;
 const secondSection = document.getElementById('SecondSection') as HTMLAnchorElement;
-const thirdSection = document.getElementById('ThirdSection') as HTMLAnchorElement;  
+const thirdSection = document.getElementById('ThirdSection') as HTMLAnchorElement;
 //sekce 
-const cubeSection = document.getElementById('Cube') as HTMLElement; 
-const whisperSection = document.getElementById('Whisper') as HTMLElement; 
-const quoteSection = document.getElementById('Citation') as HTMLElement; 
+const cubeSection = document.getElementById('Cube') as HTMLElement;
+const whisperSection = document.getElementById('Whisper') as HTMLElement;
+const quoteSection = document.getElementById('Citation') as HTMLElement;
 
-/** Fce na přesun zjednodušená */ 
+/** Fce na přesun zjednodušená */
 const sections = [
   { link: 'FirstSection', target: 'Cube' },
   { link: 'SecondSection', target: 'Whisper' },
@@ -137,54 +137,34 @@ elements.forEach(({ link, target }) => {
   }
 });
 
+/**************************** */
+//scrolující smajlík 
+const scrollImage = document.getElementById('Scroll') as HTMLImageElement;
+let lastScrollTop = 0;
+/**FCE na skroling */
+const handleScroll = (): void => {
+  const scrollTop = window.scrollY || document.documentElement.scrollTop;
 
-/**První sekce */ 
+  if (scrollTop > lastScrollTop) {
+    // Scrolling dolů
+    scrollImage.style.display = 'block';
+    scrollImage.style.animation = 'rotate-left 1s linear infinite';
+  } else {
+    // Scrolling nahorů
+    scrollImage.style.display = 'block';
+    scrollImage.style.animation = 'rotate-right 1s linear infinite';
+  }
 
-// const cubeRoll = (e: any): void => { 
-//   e.preventDefault(); 
-//   if(cubeSection) { 
-//     const offset = window.innerHeight * 0.15;
-//     const targetPosition =
-//       cubeSection.getBoundingClientRect().top + window.scrollY - offset;
-//     window.scrollTo({
-//       top: targetPosition,
-//       behavior: "smooth",
-//     });
-//   }
-// }
+  lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
 
-// /**Druhá sekce */
-// const whisperRoll = (e: any): void => {
-//   e.preventDefault();
-//   if (whisperSection) {
-//     const offset = window.innerHeight * 0.15;
-//     const targetPosition =
-//       whisperSection.getBoundingClientRect().top + window.scrollY - offset;
-//     window.scrollTo({
-//       top: targetPosition,
-//       behavior: "smooth",
-//     });
-//   }
-// }
-// /**Třetí sekce */
-// const quoteRoll = (e: any): void => {
-//   e.preventDefault();
-//   if (quoteSection) {
-//     const offset = window.innerHeight * 0.15;
-//     const targetPosition =
-//       quoteSection.getBoundingClientRect().top + window.scrollY - offset;
-//     window.scrollTo({
-//       top: targetPosition,
-//       behavior: "smooth",
-//     });
-//   }
-// } 
-// //
-// if( firtSection && secondSection && thirdSection) { 
-//   firtSection.addEventListener('click', cubeRoll);
-//   secondSection.addEventListener('click', whisperRoll);
-//   thirdSection.addEventListener('click', quoteRoll);
-// }
+  // Hide the image after a delay
+  clearTimeout((scrollImage as any).hideTimeout);
+  (scrollImage as any).hideTimeout = setTimeout(() => {
+    scrollImage.style.display = 'none';
+  }, 100); // potomto  čase se skryje
+};
+window.addEventListener('scroll', handleScroll);
+
 /****************************************************************************************************** 
  * ***************************************************************************************************
  */

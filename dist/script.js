@@ -107,6 +107,25 @@ elements.forEach(({ link, target }) => {
         link.addEventListener('click', (e) => scrollToSection(e, target));
     }
 });
+const scrollImage = document.getElementById('Scroll');
+let lastScrollTop = 0;
+const handleScroll = () => {
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    if (scrollTop > lastScrollTop) {
+        scrollImage.style.display = 'block';
+        scrollImage.style.animation = 'rotate-left 1s linear infinite';
+    }
+    else {
+        scrollImage.style.display = 'block';
+        scrollImage.style.animation = 'rotate-right 1s linear infinite';
+    }
+    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    clearTimeout(scrollImage.hideTimeout);
+    scrollImage.hideTimeout = setTimeout(() => {
+        scrollImage.style.display = 'none';
+    }, 100);
+};
+window.addEventListener('scroll', handleScroll);
 const switcher = document.querySelector('.switch input');
 const themeText = document.querySelector('.switcher-description p');
 const themeIcon = document.querySelector('.switcher-description i');
