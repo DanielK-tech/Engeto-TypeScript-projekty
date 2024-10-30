@@ -287,12 +287,18 @@ input:checked + .slider:before {
     flex-direction: column;
     align-items: center;
     gap: 10px;
+}  
+/** obrázky výhra/prohra **/
+.resultW, .resultL { 
+    width: 250px; 
+    text-align: center;
 }
 /***************************************************************/
 
 /**                        Našeptávač                    *******/
 
-.whisper {
+.whisper { 
+    margin-top: 10px;
     margin-bottom: 25px;
 }
 

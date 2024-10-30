@@ -6,6 +6,7 @@ const vysledky = document.getElementById("results") as HTMLElement;
 const pocetHodu = document.getElementById("counting") as HTMLParagraphElement;
 const pocetBodu = document.getElementById("try") as HTMLParagraphElement;
 
+
 let soucet: number = 0;
 let pocetHozeni: number = 0;
 
@@ -35,6 +36,7 @@ const hodKostkou = (): number | void => {
     vyhraObrazek.classList.add('resultW');
     vysledky.appendChild(vyhra);
     vysledky.appendChild(vyhraObrazek);
+
     const deleteTemporary = document.querySelectorAll(".temporary");
 
     deleteTemporary.forEach((element) => element.remove());
@@ -49,6 +51,7 @@ const hodKostkou = (): number | void => {
 
     vysledky.appendChild(prohra);
     vysledky.appendChild(prohraObrazek);
+
     const deleteTemporary = document.querySelectorAll(".temporary");
 
     deleteTemporary.forEach((element) => element.remove());
