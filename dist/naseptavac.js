@@ -66,3 +66,42 @@ function copyFunction() {
     navigator.clipboard.writeText(copyText.value);
     alert("Copied the text: " + copyText.value);
 }
+const inputCharName = document.getElementById('CharacterName');
+const characterSection = document.getElementById('Charakters');
+const addCharacterToWebsite = (image, name) => {
+    const div = document.createElement('div');
+    div.classList.add('character-box');
+    const img = document.createElement('img');
+    img.src = image;
+    div.append(img);
+    const p = document.createElement('p');
+    p.textContent = name;
+    div.append(p);
+    return div;
+};
+const renderCharacters = (characters) => {
+    characterSection.textContent = '';
+    characters.forEach((character) => {
+        if (character.image) {
+            const characterProfile = addCharacterToWebsite(character.image, character.name);
+            characterSection.append(characterProfile);
+        }
+    });
+};
+const getAllCharacters = () => {
+    fetch('https://hp-api.onrender.com/api/characters')
+        .then(response => response.json())
+        .then(data => {
+        inputCharName.addEventListener('input', () => {
+            const inputValue = inputCharName.value.toLowerCase();
+            console.log(inputValue);
+            const filteredCharacters = data.filter((oneCharacter) => {
+                return oneCharacter.name.toLowerCase().includes(inputValue);
+            });
+            renderCharacters(filteredCharacters);
+            console.log(filteredCharacters);
+        });
+        renderCharacters(data);
+    });
+};
+getAllCharacters();

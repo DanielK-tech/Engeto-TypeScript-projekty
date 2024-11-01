@@ -77,6 +77,53 @@ function copyFunction():void {
     navigator.clipboard.writeText(copyText.value); 
     // Alert the copied text
     alert("Copied the text: " + copyText.value);
+} 
+/**API a vyhledávání na Harryho Potterra atd. */ 
 
+const inputCharName = document.getElementById('CharacterName') as HTMLInputElement;
+const characterSection = document.getElementById('Charakters') as HTMLElement; 
 
+/** FCE na API */ 
+
+/** Přidávání do stránky */ 
+const addCharacterToWebsite = (image: string, name: string | null) => {
+    const div = document.createElement('div');
+    div.classList.add('character-box');
+    const img = document.createElement('img');
+    img.src = image;
+    div.append(img);
+
+    const p = document.createElement('p');
+    p.textContent = name;
+    div.append(p);
+    return div;
 }
+
+/** Rendrování podle IMG */
+const renderCharacters = (characters: any[]) => { 
+    characterSection.textContent = '';
+    characters.forEach((character) => {
+        if (character.image) { 
+            const characterProfile = addCharacterToWebsite(character.image, character.name);
+            characterSection.append(characterProfile);           
+        }
+    })
+}
+/**Vyhodí vyrendrované výsledky */
+const getAllCharacters = (): void => {
+    fetch('https://hp-api.onrender.com/api/characters')
+        .then(response => response.json())
+        .then(data => {
+            inputCharName.addEventListener('input', () => {
+                const inputValue = inputCharName.value.toLowerCase();   
+                console.log(inputValue)             
+                const filteredCharacters = data.filter((oneCharacter: any) => {
+                    return oneCharacter.name.toLowerCase().includes(inputValue);
+                });
+                renderCharacters(filteredCharacters); 
+                console.log(filteredCharacters)
+            });
+            renderCharacters(data);
+        });
+} 
+getAllCharacters()

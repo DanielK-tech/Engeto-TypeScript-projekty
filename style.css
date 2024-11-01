@@ -19,7 +19,8 @@
     --red-color: red;
     --citaty-p-color: #d6d58e;
     --citaty-button-background: #042940;
-    --citaty-button-hover: #153b53;
+    --citaty-button-hover: #153b53; 
+    --Galery-p-color: #af5b16;
 }
 [data-theme="light"] {
     --header-background: rgb(235, 238, 243);
@@ -53,7 +54,7 @@ main {
     align-items: center;
 }
 /* skrolující smajlík ***/
-.scroll-image { 
+.scroll-image {
     display: none;
     position: fixed;
     bottom: 10px;
@@ -287,17 +288,18 @@ input:checked + .slider:before {
     flex-direction: column;
     align-items: center;
     gap: 10px;
-}  
+}
 /** obrázky výhra/prohra **/
-.resultW, .resultL { 
-    width: 250px; 
+.resultW,
+.resultL {
+    width: 250px;
     text-align: center;
 }
 /***************************************************************/
 
 /**                        Našeptávač                    *******/
 
-.whisper { 
+.whisper {
     margin-top: 10px;
     margin-bottom: 25px;
 }
@@ -501,4 +503,49 @@ input:checked + .slider:before {
     100% {
         transform: rotate(360deg);
     }
+}
+/*** Sekce search box ***/
+.search-box {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+/* Input */
+.character-name {
+    font-size: 18px;
+    padding: 5px 10px;
+    border-radius: 15px;
+    text-align: center;
+    outline: none;
+}
+/** Sekce s obrázky **/
+.charakters {
+    min-height: 100vh; 
+    min-height: 60vh;
+    margin: 20px 0px;
+    display: flex;    
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+/** Div na Fotky **/
+.character-box {
+    box-shadow: 0px 0px 7px black;
+    transition: 0.3s;
+}
+.character-box:hover {
+    transform: scale(1.05);
+}
+.character-box img {
+    width: 170px;
+    height: 245px;
+}
+.character-box p {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--white-color); 
+    background-color: var(--Galery-p-color);
 }
