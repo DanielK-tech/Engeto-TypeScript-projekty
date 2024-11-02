@@ -1,35 +1,135 @@
 <!DOCTYPE html>
 <html lang="cs">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./style.css" />
-    <title>Kostka</title>
-  </head>
-  <body>
-    <header>
-      <section class="cube">
-        <div class="row">
-          <button id="button" class="btn">Hoď kostkou</button>
-          <button id="zero" class="null">Vynuluj hody</button>
-        </div>
-        <img
-          id="Cube"
-          class="cube-image"
-          src="./img/1.jpg"
-          alt="Kostka s jedničkou"
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!--Iconky-->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         />
-        <h2>Zkus hodit do 4 pokusů, alespoň 18 bodů :)</h2>
-      </section>
-      <section id="results" class="result">
-        <div class="together">
-          <p id="counting">Hodili jste:</p>
-          <p id="try">Počet hodů:</p>
-        </div>
-      </section>
-    </header>
-    <main></main>
-    <footer></footer>
-    <script src="./dist/script.js"></script>
-  </body>
+        <!--Načítá favicon z jiných stránek-->
+        <link
+            rel="icon"
+            type="image/png"
+            href="https://s2.googleusercontent.com/s2/favicons?domain=engeto.cz"
+        />
+        <link rel="stylesheet" href="./style.css" />
+        <link rel="stylesheet" href="./query.css" />
+        <title>Projekty v TS</title>
+    </head>
+    <body>
+        <header>
+            <img
+                src="./img/smile.png"
+                alt="Rotující smajlík"
+                id="Scroll"
+                class="scroll-image"
+            />
+            <nav id="navigace" class="navigation">
+                <ul>
+                    <li><a id="FirstSection" href="#">Hod Kostkou</a></li>
+                    <li><a id="SecondSection" href="#">Našeptávač</a></li>
+                    <li><a id="ThirdSection" href="#">Citáty</a></li>
+                </ul>
+                <!--Vypínač-->
+                <div class="switcher-box">
+                    <span class="switcher-description">
+                        <p>Dark Mode</p>
+                        <!-- <i class="fa-solid fa-sun"></i> -->
+                        <i class="fa-solid fa-cloud-moon"></i>
+                    </span>
+                    <label class="switch">
+                        <!--Přepínač-->
+                        <input type="checkbox" />
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+            </nav>
+            <!--Hrací kostka-->
+            <section id="Cube" class="cube">
+                <div class="row">
+                    <button id="button" class="btn">Hoď kostkou</button>
+                    <button id="zero" class="null">Vynuluj hody</button>
+                </div>
+                <img
+                    id="Cube"
+                    class="cube-image"
+                    src="./img/1.jpg"
+                    alt="Kostka s jedničkou"
+                />
+                <h2>Zkus hodit do 4 pokusů, alespoň 18 bodů :)</h2>
+            </section>
+            <section id="results" class="result">
+                <div class="together">
+                    <p id="counting">Hodili jste:</p>
+                    <p id="try">Počet hodů:</p>
+                </div> 
+                
+            </section>
+        </header>
+        <main>
+            <!--našeptívač-->
+            <section id="Whisper" class="whisper">
+                <div class="whisper-input">
+                    <input
+                        id="Input"
+                        type="text"
+                        class="whisper-textInput"
+                        placeholder="Hledaný výraz"
+                        autocomplete="off"
+                    />
+                    <div class="whisper-searcher">
+                        <div id="Search" class="whisper-search"></div>
+                    </div>
+                    <button id="Copy" class="copiering">Kopírovat text</button>
+                </div>
+                <p id="Warning" class="varovani">
+                    Varování! Caps lock je ZAPNUTÝ
+                </p>
+                <div class="whisper-result"></div>
+            </section>
+            <!--Sekce citáty-->
+            <section id="Citation" class="citation">
+                <div id="Quote-box" class="citation-conteiner">
+                    <div class="citation-text">
+                        <p class="citation-quote">
+                            Lorem ipsum, dolor sit amet consectetur adipisicing
+                            elit. Fuga qui nulla corporis architecto doloribus
+                            sed fugiat porro molestiae, veniam eveniet
+                            laudantium expedita repudiandae recusandae nesciunt
+                            unde iure aliquam tenetur iste.
+                        </p>
+                    </div>
+                    <!--Autor-->
+                    <div class="citation-autor">
+                        <p class="citation-name">Lorem ipsum dolor</p>
+                    </div>
+                    <!--Tlačítka-->
+                    <div class="citation-buttons">
+                        <button class="citation-btn google-btn">
+                            <i class="fa-brands fa-google"></i
+                            ><span>Najít na google</span>
+                        </button>
+                        <button class="citation-btn next-quote">
+                            Další citát
+                        </button>
+                    </div>
+                </div>
+            </section>
+            <div id="Loader" class="loader"></div>
+            <!--Loader-->  
+            <!--Vyhledávač postav-->
+            <section id="SearchBox" class="search-box"> 
+                <input id="CharacterName" class="character-name" type="text" placeholder="Jméno postavy">
+            </section> 
+            <!--Postavy--> 
+            <section id="Charakters" class="charakters"> 
+
+            </section>
+        </main>
+        <footer></footer>
+        <script src="./dist/script.js"></script>
+        <script src="./dist/naseptavac.js"></script>
+    </body>
 </html>

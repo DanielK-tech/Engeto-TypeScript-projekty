@@ -1,0 +1,53 @@
+/*** malá LCD ***/
+@media (width <= 960px) {
+    .switcher-box {
+        /** dark mode*/
+        flex-direction: column;
+        padding-top: 5px;
+    }
+}
+
+/** Tablety ***/
+@media (width <= 784px) {
+    .navigation ul {
+        display: none;
+    }
+    .switcher-box {
+        justify-content: center;
+    }
+}
+
+/**** Mobile res */
+@media (width <= 450px) {
+    .citation-buttons {
+        flex-direction: column;
+        row-gap: 7px;
+    }
+    /** whisper box*/
+    .whisper-input {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+    }
+    .whisper-input::before {
+        width: 100%;
+        height: 100%;
+        right: 0px;
+        top: -10px;
+    }
+
+    .whisper-search {
+        height: 35px;
+    }
+    .copiering {
+        width: 100%;
+    } 
+    .copiering::before {
+    content: "";
+    width: 100%;
+    height: 100%;    
+    right: -0px;
+    top: 10px;    
+}
+}
