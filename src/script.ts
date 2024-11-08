@@ -38,7 +38,6 @@ const hodKostkou = (): number | void => {
     vysledky.appendChild(vyhraObrazek);
 
     const deleteTemporary = document.querySelectorAll(".temporary");
-
     deleteTemporary.forEach((element) => element.remove());
   } else if (pocetHozeni === 4 && soucet < 18) {
     const prohra = document.createElement("h2");
@@ -94,6 +93,7 @@ const vynulujVysledek = () => {
   deleteTemporary.forEach((element) => element.remove());
 };
 
+/** samostatné pužití fce **/
 if (tlacitko && vynuluj) {
   tlacitko.addEventListener("click", hodKostkou);
   vynuluj.addEventListener("click", vynulujVysledek);
