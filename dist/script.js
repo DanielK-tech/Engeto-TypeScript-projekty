@@ -1,6 +1,6 @@
 "use strict";
 const tlacitko = document.getElementById("button");
-const kostka = document.getElementById("Cube");
+const kostka = document.getElementById("Cubes");
 const vynuluj = document.getElementById("zero");
 const vysledky = document.getElementById("results");
 const pocetHodu = document.getElementById("counting");
@@ -79,7 +79,6 @@ if (tlacitko && vynuluj) {
 const firtSection = document.getElementById('FirstSection');
 const secondSection = document.getElementById('SecondSection');
 const thirdSection = document.getElementById('ThirdSection');
-const cubeSection = document.getElementById('Cube');
 const whisperSection = document.getElementById('Whisper');
 const quoteSection = document.getElementById('Citation');
 const sections = [

@@ -1,6 +1,6 @@
-"use strict";
+
 const tlacitko = document.getElementById("button") as HTMLButtonElement;
-const kostka = document.getElementById("Cube") as HTMLImageElement;
+const kostka = document.getElementById("Cubes") as HTMLImageElement;
 const vynuluj = document.getElementById("zero") as HTMLButtonElement;
 const vysledky = document.getElementById("results") as HTMLElement;
 const pocetHodu = document.getElementById("counting") as HTMLParagraphElement;
@@ -13,7 +13,7 @@ let pocetHozeni: number = 0;
 /*** fce na hod kostkou ***/
 const hodKostkou = (): number | void => {
   const hozeneCislo: number = Math.floor(Math.random() * 6) + 1;
-  kostka.src = `./img/${hozeneCislo}.jpg`;
+  kostka.src = `./img/${hozeneCislo}.jpg`;    
   /** výsledky **/
   const vysledek = document.createElement("p");
   vysledek.classList.add("temporary");
@@ -106,7 +106,7 @@ const firtSection = document.getElementById('FirstSection') as HTMLAnchorElement
 const secondSection = document.getElementById('SecondSection') as HTMLAnchorElement;
 const thirdSection = document.getElementById('ThirdSection') as HTMLAnchorElement;
 //sekce 
-const cubeSection = document.getElementById('Cube') as HTMLElement;
+// const cubeSection = document.getElementById('Cube') as HTMLElement;
 const whisperSection = document.getElementById('Whisper') as HTMLElement;
 const quoteSection = document.getElementById('Citation') as HTMLElement;
 
