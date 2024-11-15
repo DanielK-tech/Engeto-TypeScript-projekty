@@ -19,8 +19,9 @@
     --red-color: red;
     --citaty-p-color: #d6d58e;
     --citaty-button-background: #042940;
-    --citaty-button-hover: #153b53; 
+    --citaty-button-hover: #153b53;
     --Galery-p-color: #af5b16;
+    --dialog-box-shadow: 5px;
 }
 [data-theme="light"] {
     --header-background: rgb(235, 238, 243);
@@ -52,12 +53,12 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-} 
+}
 
-footer p{ 
-    position: relative; 
-    font-size: 1.0rem;
-} 
+footer p {
+    position: relative;
+    font-size: 1rem;
+}
 footer p::before {
     content: "";
     width: 100%;
@@ -435,7 +436,7 @@ input:checked + .slider:before {
     padding-top: 50px;
     min-height: 30vh;
     flex: 1;
-    width: 80%;
+    width: 50%;
 }
 
 /**conatiner**/
@@ -536,10 +537,10 @@ input:checked + .slider:before {
 }
 /** Sekce s obrázky **/
 .charakters {
-    min-height: 100vh; 
+    min-height: 100vh;
     min-height: 60vh;
     margin: 20px 0px;
-    display: flex;    
+    display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
@@ -562,6 +563,103 @@ input:checked + .slider:before {
     text-align: center;
     font-size: 18px;
     font-weight: bold;
-    color: var(--white-color); 
+    color: var(--white-color);
     background-color: var(--Galery-p-color);
+}
+/** dialog ***/
+.dialog {
+    border: none;
+    border-radius: 8px;
+    box-shadow: var(--dialog-box-shadow) var(--dialog-box-shadow) 10px
+        rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;  
+    /* top: 50%; 
+    left: 50%; */
+    form { 
+       text-align: center;
+    } 
+   
+} 
+.dialog:hover{ 
+    --dialog-box-shadow: 15px; /** změna proměných **/
+} 
+
+/** dialogové menu*/ 
+.dialog-menu {
+    display: flex;
+    justify-content: space-between;
+    
+} 
+
+.dialog-input{ 
+    text-align: center;
+} 
+/** tlačítko **/ 
+.dialog-cancelBtn{  
+    position: relative;
+    padding: 10px; 
+    letter-spacing: 1px; 
+    border: none; 
+    transition: .5s;
+}  
+.dialog-cancelBtn::before{ 
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-image: var(--btn-before);
+    filter: blur(10px);
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+}
+.dialog-cancelBtn:hover{ 
+    transform: scale(1.3) rotate(15deg);
+    letter-spacing: 1px;
+} 
+/** bankovní sekce **/ 
+.bank-calculator{ 
+    text-align: center; 
+    margin-bottom: 10px;
+} 
+
+/** input */ 
+.bank-input{ 
+    padding: 10px; 
+    border-radius: 5px; 
+    text-align: center; 
+    font-size: 1.3rem; 
+    letter-spacing: 2px;  
+    outline: none;
+} 
+
+/** tlačítko **/ 
+.bank-button{ 
+    position: relative;
+    padding: 10px; 
+    letter-spacing: 1px;  
+    font-size: 1.3rem; 
+    border-radius: 5px;
+    border: none; 
+    transition: 1s;
+} 
+.bank-button::before{ 
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-image: var(--btn-before);
+    filter: blur(10px);
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+} 
+.bank-button:hover{ 
+    transform: scale(1.3) rotate(15deg);
+    letter-spacing: 1px;
+} 
+/** výsledek **/
+.bank-movement { 
+    margin-top: 10px;
 }

@@ -64,8 +64,7 @@
                 <div class="together">
                     <p id="counting">Hodili jste:</p>
                     <p id="try">Počet hodů:</p>
-                </div> 
-                
+                </div>
             </section>
         </header>
         <main>
@@ -118,15 +117,48 @@
                 </div>
             </section>
             <div id="Loader" class="loader"></div>
-            <!--Loader-->  
+            <!--Loader-->
             <!--Vyhledávač postav-->
-            <section id="SearchBox" class="search-box"> 
-                <input id="CharacterName" class="character-name" type="text" placeholder="Jméno postavy">
-            </section> 
-            <!--Postavy--> 
-            <section id="Charakters" class="charakters"> 
-
+            <section id="SearchBox" class="search-box">
+                <input
+                    id="CharacterName"
+                    class="character-name"
+                    type="text"
+                    placeholder="Jméno postavy"
+                />
             </section>
+            <!--Postavy-->
+            <section id="Charakters" class="charakters"></section> 
+            <!--Sekce bankovnicví--> 
+            <section id="Bank" class="bank-calculator">  
+                <h2>Bankovní kalkulačka</h2>
+                <form action="" id="BankForm" class="bank-form"> 
+                    <input id="BankInput" type="number" class="bank-input" placeholder="Zadejte částku"> 
+                    <button class="bank-button">Zadat</button>
+                </form> 
+                <div class="bank-result-container"> 
+                    <button id="BankMovements" class="bank-movement bank-button">Vypsat pohyby</button> 
+                    <div class="all-movements-result"></div>
+                    <div id="BankResult" class="bank-result"></div>
+                </div>
+            </section>
+            <!--Dialog-->
+            <dialog id="pinDialog" class="dialog">
+                <form method="dialog"> <!--metoda dialogu-->
+                    <p>Prosím, zadejte PIN:</p>
+                    <input
+                        type="number"
+                        id="userPin" 
+                        class="dialog-input"
+                        placeholder="Zadejte PIN"
+                        required
+                    />
+                    <menu class="dialog-menu">
+                        <button id="cancelBtn" class="dialog-cancelBtn">Zrušit</button> <!--nemusí obsahovat-->
+                        <button id="confirmBtn" class="dialog-cancelBtn" type="submit">Odeslat</button>
+                    </menu>
+                </form>
+            </dialog>
         </main>
         <footer><p>© 2024 - Daniel Kolegar. All Rights Reserved.</p></footer>
         <script src="./dist/script.js"></script>

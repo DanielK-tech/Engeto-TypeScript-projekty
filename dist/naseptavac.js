@@ -105,3 +105,90 @@ const getAllCharacters = () => {
     });
 };
 getAllCharacters();
+class BankAccount {
+    firstName;
+    secondName;
+    income;
+    expense;
+    pin;
+    movements;
+    currentState;
+    constructor(firstName, secondName, pin) {
+        this.firstName = firstName;
+        this.secondName = secondName;
+        this.pin = pin;
+        this.income = 0;
+        this.expense = 0;
+        this.movements = [];
+        this.currentState = 0;
+    }
+    pinChecker(userPin) {
+        if (this.pin != userPin) {
+            window.location.replace('wrongpin.html');
+        }
+    }
+    #movement(money) {
+        this.movements.push(money);
+    }
+    addMoney(amount) {
+        this.income += amount;
+        this.#movement(amount);
+    }
+    removeMoney(amount) {
+        this.expense += amount;
+        this.#movement(-amount);
+    }
+    moneyInAccount() {
+        return this.currentState = this.income + this.expense;
+    }
+    listingCurrentState(whereToList) {
+        whereToList.textContent = '';
+        const newParagraph = document.createElement("p");
+        newParagraph.textContent = this.moneyInAccount().toString();
+        whereToList.append(newParagraph);
+    }
+    writeOutMovements(whereToList) {
+        this.movements.forEach((oneMovement) => {
+            whereToList.textContent = '';
+            const newParagraph = document.createElement("p");
+            newParagraph.textContent = oneMovement.toString();
+            whereToList.append(newParagraph);
+        });
+    }
+}
+const account1 = new BankAccount("David", "Šetek", 1234);
+window.onload = function () {
+    const dialog = document.getElementById('pinDialog');
+    dialog.showModal();
+    const cancelBtn = document.getElementById('cancelBtn');
+    cancelBtn.addEventListener('click', () => {
+        dialog.close();
+    });
+    const confirmBtn = document.getElementById('confirmBtn');
+    confirmBtn.addEventListener('click', () => {
+        const userPin = parseInt(document.getElementById('userPin').value, 10);
+        account1.pinChecker(userPin);
+        dialog.close();
+    });
+};
+const form = document.getElementById('BankForm');
+const bankInput = document.getElementById('BankInput');
+const resultList = document.getElementById('BankResult');
+const buttonMovements = document.getElementById('BankMovements');
+const allMovementsResult = document.querySelector(".all-movements-result");
+form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const amount = parseInt(bankInput.value, 10);
+    console.log(amount);
+    if (amount > 0) {
+        account1.addMoney(amount);
+    }
+    else {
+        account1.removeMoney((amount));
+    }
+    bankInput.value = '';
+    account1.listingCurrentState(resultList);
+});
+buttonMovements.addEventListener('click', () => {
+    account1.writeOutMovements(allMovementsResult);
+});
