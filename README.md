@@ -5,5 +5,6 @@
 3. Generátor citací
 4. Harry Potter => filtr postav 
 5. Bankovní jednoduché počítatdlo 
+6. Poloha družice
 
 <strong>Pozor na dialogové okno!</strong>

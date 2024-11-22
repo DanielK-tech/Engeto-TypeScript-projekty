@@ -128,37 +128,79 @@
                 />
             </section>
             <!--Postavy-->
-            <section id="Charakters" class="charakters"></section> 
-            <!--Sekce bankovnicví--> 
-            <section id="Bank" class="bank-calculator">  
+            <section id="Charakters" class="charakters"></section>
+            <!--Sekce bankovnicví-->
+            <section id="Bank" class="bank-calculator">
                 <h2>Bankovní kalkulačka</h2>
-                <form action="" id="BankForm" class="bank-form"> 
-                    <input id="BankInput" type="number" class="bank-input" placeholder="Zadejte částku"> 
+                <form action="" id="BankForm" class="bank-form">
+                    <input
+                        id="BankInput"
+                        type="number"
+                        class="bank-input"
+                        placeholder="Zadejte částku"
+                    />
                     <button class="bank-button">Zadat</button>
-                </form> 
-                <div class="bank-result-container"> 
-                    <button id="BankMovements" class="bank-movement bank-button">Vypsat pohyby</button> 
+                </form>
+                <div class="bank-result-container">
+                    <button
+                        id="BankMovements"
+                        class="bank-movement bank-button"
+                    >
+                        Vypsat pohyby
+                    </button>
                     <div class="all-movements-result"></div>
                     <div id="BankResult" class="bank-result"></div>
                 </div>
             </section>
             <!--Dialog-->
             <dialog id="pinDialog" class="dialog">
-                <form method="dialog"> <!--metoda dialogu-->
+                <!--tu lze doplnit open (nemusíme použít TS)-->
+                <form method="dialog">
+                    <!--metoda dialogu-->
                     <p>Prosím, zadejte PIN:</p>
                     <input
                         type="number"
-                        id="userPin" 
+                        id="userPin"
                         class="dialog-input"
                         placeholder="Zadejte PIN"
                         required
                     />
                     <menu class="dialog-menu">
-                        <button id="cancelBtn" class="dialog-cancelBtn">Zrušit</button> <!--nemusí obsahovat-->
-                        <button id="confirmBtn" class="dialog-cancelBtn" type="submit">Odeslat</button>
+                        <button id="cancelBtn" class="dialog-cancelBtn">
+                            Zrušit
+                        </button>
+                        <!--nemusí obsahovat-->
+                        <button
+                            id="confirmBtn"
+                            class="dialog-cancelBtn"
+                            type="submit"
+                        >
+                            Odeslat
+                        </button>
                     </menu>
                 </form>
             </dialog>
+            <!--Dialog další-->
+            <dialog id="myDialog">
+                <form method="dialog">
+                    <p>Vyberte svou oblíbenou barvu:</p>
+                    <select id="dialog-try" name="color" required>
+                        <option value="červená">Červená</option>
+                        <option value="modrá">Modrá</option>
+                        <option value="zelená">Zelená</option>
+                    </select>
+                    <menu>
+                        <!-- <button value="cancel">Zrušit</button> -->
+                        <button value="confirm">Potvrdit</button>
+                    </menu>
+                </form>
+            </dialog>
+            <button id="openDialog">Otevřít dialog</button>
+            <p id="result"></p>
+            <!--Sekce o družici-->
+            <section id="ApiSatelite" class="satelite">
+                <h2>Aktuální poloha družice ISS</h2>
+            </section>
         </main>
         <footer><p>© 2024 - Daniel Kolegar. All Rights Reserved.</p></footer>
         <script src="./dist/script.js"></script>

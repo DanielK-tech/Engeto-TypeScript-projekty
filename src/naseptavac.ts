@@ -194,7 +194,7 @@ const account1 = new BankAccount("David", "Šetek", 1234);
 //dialogové okno na zadání pinu, při načtení stránky 
 window.onload = function () {
     const dialog = document.getElementById('pinDialog') as HTMLDialogElement; //chycení dialogu
-    dialog.showModal(); //fce na zobrazení dialogu
+    dialog.showModal(); //fce na zobrazení dialogu, dialog.show() <== nemodální dialog
 
     const cancelBtn = document.getElementById('cancelBtn') as HTMLButtonElement; //tlačítko zrušit (nemusí mít žádnou akci)
     cancelBtn.addEventListener('click', () => {
@@ -235,3 +235,62 @@ form.addEventListener('submit', (event) => {
 buttonMovements.addEventListener('click', () => {
     account1.writeOutMovements(allMovementsResult);
 });
+
+//další dialogové okno, tentokráte na tlačítko 
+const dialog = document.getElementById('myDialog') as HTMLDialogElement;
+const openDialogButton = document.getElementById('openDialog') as HTMLButtonElement;
+const result = document.getElementById('result') as HTMLParagraphElement; 
+const select = document.getElementById('dialog-try') as HTMLSelectElement;
+
+openDialogButton.addEventListener('click', () => {
+    dialog.showModal();
+});
+
+dialog.addEventListener('close', () => { //chybí mi nastavení fce na tlačítko cancel
+    // result.textContent = `Dialog byl zavřen s returnValue: ${dialog.returnValue}`; 
+    // result.textContent = `Dialog byl zavřen s selectedIndex: ${select.selectedIndex}`; 
+
+    result.textContent = `Dialog byl zavřen s value: ${select.value}`; //červená hodnota
+    // https://udn.realityripple.com/docs/Web/API/HTMLDialogElement/returnValue
+}); 
+
+//Přidání API o tom, kde je družice ISS 
+const quoteSections = document.getElementById('ApiSatelite') as HTMLElement; 
+
+//fce na přidělání paragrafu do sekce
+const htmlToWebsite = (htmlTag: string, content: string, whereToAdd: HTMLElement): void => {
+    const tag = document.createElement(htmlTag)
+    tag.textContent = content
+    whereToAdd.append(tag)
+} 
+
+//fce na mapy.cz 
+const linkToWebsite = (linkContent: string, urlAddress: string, whereToAdd: HTMLElement): void => {
+    const newLink = document.createElement("a")
+    newLink.textContent = linkContent
+    newLink.href = urlAddress 
+    newLink.classList.add("link")
+    newLink.target = "_blank"; // Otevře odkaz v novém okně
+    whereToAdd.append(newLink)
+} 
+//
+let latitude: number;
+let longitude: number;
+const request = 
+    fetch('http://api.open-notify.org/iss-now.json') //<= API
+    .then((response) => {  
+        loader.style.display = 'block';
+        return response.json(); 
+    }) 
+    .then((data) => {  
+        latitude = data.iss_position.latitude
+        longitude = data.iss_position.longitude
+        htmlToWebsite("p", `Zeměpisná Šířka: ${latitude}`, quoteSections)
+        htmlToWebsite("p", `Zeměpisná Délka: ${longitude}`, quoteSections) 
+        const url = `https://mapy.cz/zakladni?source=muni&ds=2&x=${longitude}&y=${latitude}&z=9`;
+        linkToWebsite("Zobrazit na mapy.cz", url, quoteSections)
+        console.log(data); 
+    }) 
+    .finally(() => {
+        loader.style.display = 'none';
+    })

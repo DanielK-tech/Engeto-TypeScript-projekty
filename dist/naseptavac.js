@@ -192,3 +192,46 @@ form.addEventListener('submit', (event) => {
 buttonMovements.addEventListener('click', () => {
     account1.writeOutMovements(allMovementsResult);
 });
+const dialog = document.getElementById('myDialog');
+const openDialogButton = document.getElementById('openDialog');
+const result = document.getElementById('result');
+const select = document.getElementById('dialog-try');
+openDialogButton.addEventListener('click', () => {
+    dialog.showModal();
+});
+dialog.addEventListener('close', () => {
+    result.textContent = `Dialog byl zavřen s value: ${select.value}`;
+});
+const quoteSections = document.getElementById('ApiSatelite');
+const htmlToWebsite = (htmlTag, content, whereToAdd) => {
+    const tag = document.createElement(htmlTag);
+    tag.textContent = content;
+    whereToAdd.append(tag);
+};
+const linkToWebsite = (linkContent, urlAddress, whereToAdd) => {
+    const newLink = document.createElement("a");
+    newLink.textContent = linkContent;
+    newLink.href = urlAddress;
+    newLink.classList.add("link");
+    newLink.target = "_blank";
+    whereToAdd.append(newLink);
+};
+let latitude;
+let longitude;
+const request = fetch('http://api.open-notify.org/iss-now.json')
+    .then((response) => {
+    loader.style.display = 'block';
+    return response.json();
+})
+    .then((data) => {
+    latitude = data.iss_position.latitude;
+    longitude = data.iss_position.longitude;
+    htmlToWebsite("p", `Zeměpisná Šířka: ${latitude}`, quoteSections);
+    htmlToWebsite("p", `Zeměpisná Délka: ${longitude}`, quoteSections);
+    const url = `https://mapy.cz/zakladni?source=muni&ds=2&x=${longitude}&y=${latitude}&z=9`;
+    linkToWebsite("Zobrazit na mapy.cz", url, quoteSections);
+    console.log(data);
+})
+    .finally(() => {
+    loader.style.display = 'none';
+});

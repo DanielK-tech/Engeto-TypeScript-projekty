@@ -573,37 +573,35 @@ input:checked + .slider:before {
     box-shadow: var(--dialog-box-shadow) var(--dialog-box-shadow) 10px
         rgba(0, 0, 0, 0.1);
     padding: 20px;
-    width: 300px;  
+    width: 300px;
     /* top: 50%; 
     left: 50%; */
-    form { 
-       text-align: center;
-    } 
-   
-} 
-.dialog:hover{ 
+    form {
+        text-align: center;
+    }
+}
+.dialog:hover {
     --dialog-box-shadow: 15px; /** změna proměných **/
-} 
+}
 
-/** dialogové menu*/ 
+/** dialogové menu*/
 .dialog-menu {
     display: flex;
     justify-content: space-between;
-    
-} 
+}
 
-.dialog-input{ 
+.dialog-input {
     text-align: center;
-} 
-/** tlačítko **/ 
-.dialog-cancelBtn{  
+}
+/** tlačítko **/
+.dialog-cancelBtn {
     position: relative;
-    padding: 10px; 
-    letter-spacing: 1px; 
-    border: none; 
-    transition: .5s;
-}  
-.dialog-cancelBtn::before{ 
+    padding: 10px;
+    letter-spacing: 1px;
+    border: none;
+    transition: 0.5s;
+}
+.dialog-cancelBtn::before {
     content: "";
     width: 100%;
     height: 100%;
@@ -614,37 +612,37 @@ input:checked + .slider:before {
     top: 0;
     z-index: -1;
 }
-.dialog-cancelBtn:hover{ 
+.dialog-cancelBtn:hover {
     transform: scale(1.3) rotate(15deg);
     letter-spacing: 1px;
-} 
-/** bankovní sekce **/ 
-.bank-calculator{ 
-    text-align: center; 
+}
+/** bankovní sekce **/
+.bank-calculator {
+    text-align: center;
     margin-bottom: 10px;
-} 
+}
 
-/** input */ 
-.bank-input{ 
-    padding: 10px; 
-    border-radius: 5px; 
-    text-align: center; 
-    font-size: 1.3rem; 
-    letter-spacing: 2px;  
-    outline: none;
-} 
-
-/** tlačítko **/ 
-.bank-button{ 
-    position: relative;
-    padding: 10px; 
-    letter-spacing: 1px;  
-    font-size: 1.3rem; 
+/** input */
+.bank-input {
+    padding: 10px;
     border-radius: 5px;
-    border: none; 
+    text-align: center;
+    font-size: 1.3rem;
+    letter-spacing: 2px;
+    outline: none;
+}
+
+/** tlačítko **/
+.bank-button {
+    position: relative;
+    padding: 10px;
+    letter-spacing: 1px;
+    font-size: 1.3rem;
+    border-radius: 5px;
+    border: none;
     transition: 1s;
-} 
-.bank-button::before{ 
+}
+.bank-button::before {
     content: "";
     width: 100%;
     height: 100%;
@@ -654,12 +652,25 @@ input:checked + .slider:before {
     left: 0;
     top: 0;
     z-index: -1;
-} 
-.bank-button:hover{ 
+}
+.bank-button:hover {
     transform: scale(1.3) rotate(15deg);
     letter-spacing: 1px;
-} 
+}
 /** výsledek **/
-.bank-movement { 
+.bank-movement {
     margin-top: 10px;
+}
+/********************/
+/** satelit **/
+.satelite {
+    display: block;
+    text-align: left;
+    width: 80%;
+}
+
+.link {
+    text-decoration: none;
+    color: var(--white-color);
+    font-style: italic;
 }
