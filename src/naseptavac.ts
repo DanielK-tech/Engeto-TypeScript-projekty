@@ -253,7 +253,9 @@ dialog.addEventListener('close', () => { //chybí mi nastavení fce na tlačítk
     result.textContent = `Dialog byl zavřen s value: ${select.value}`; //červená hodnota
     // https://udn.realityripple.com/docs/Web/API/HTMLDialogElement/returnValue
 }); 
-
+/***************************************************************************************************************************************************
+ * **************************************************************************************************************************************************
+ */
 //Přidání API o tom, kde je družice ISS 
 const quoteSections = document.getElementById('ApiSatelite') as HTMLElement; 
 
@@ -279,7 +281,7 @@ let longitude: number;
 const request = 
     fetch('http://api.open-notify.org/iss-now.json') //<= API
     .then((response) => {  
-        loader.style.display = 'block';
+        // loader.style.display = 'block';
         return response.json(); 
     }) 
     .then((data) => {  
@@ -288,9 +290,8 @@ const request =
         htmlToWebsite("p", `Zeměpisná Šířka: ${latitude}`, quoteSections)
         htmlToWebsite("p", `Zeměpisná Délka: ${longitude}`, quoteSections) 
         const url = `https://mapy.cz/zakladni?source=muni&ds=2&x=${longitude}&y=${latitude}&z=9`;
-        linkToWebsite("Zobrazit na mapy.cz", url, quoteSections)
-        console.log(data); 
+        linkToWebsite("Zobrazit na mapy.cz", url, quoteSections)       
     }) 
     .finally(() => {
-        loader.style.display = 'none';
+        // loader.style.display = 'none';
     })

@@ -220,7 +220,6 @@ let latitude;
 let longitude;
 const request = fetch('http://api.open-notify.org/iss-now.json')
     .then((response) => {
-    loader.style.display = 'block';
     return response.json();
 })
     .then((data) => {
@@ -230,8 +229,6 @@ const request = fetch('http://api.open-notify.org/iss-now.json')
     htmlToWebsite("p", `Zeměpisná Délka: ${longitude}`, quoteSections);
     const url = `https://mapy.cz/zakladni?source=muni&ds=2&x=${longitude}&y=${latitude}&z=9`;
     linkToWebsite("Zobrazit na mapy.cz", url, quoteSections);
-    console.log(data);
 })
     .finally(() => {
-    loader.style.display = 'none';
 });
