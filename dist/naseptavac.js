@@ -232,3 +232,19 @@ const request = fetch('http://api.open-notify.org/iss-now.json')
 })
     .finally(() => {
 });
+const countreSection = document.getElementById('Countre');
+const paragraphToWebsite = (content, whereToAdd) => {
+    const newParagraph = document.createElement("p");
+    newParagraph.textContent = content;
+    newParagraph.classList.add("paragraph");
+    whereToAdd.append(newParagraph);
+};
+const requester = fetch("https://restcountries.com/v3.1/name/italy")
+    .then((response) => {
+    return response.json();
+})
+    .then((data) => {
+    paragraphToWebsite(data[0].capital[0], countreSection);
+    paragraphToWebsite(data[0].name.common, countreSection);
+    paragraphToWebsite(data[0].region, countreSection);
+});
