@@ -233,18 +233,29 @@ const request = fetch('http://api.open-notify.org/iss-now.json')
     .finally(() => {
 });
 const countreSection = document.getElementById('Countre');
+const countreResult = document.querySelector('.country-result');
+const formular = document.getElementById('CountryForm');
+const countryInput = document.getElementById('Country');
+const searchButtonCountry = document.getElementById('CountryButton');
 const paragraphToWebsite = (content, whereToAdd) => {
     const newParagraph = document.createElement("p");
     newParagraph.textContent = content;
     newParagraph.classList.add("paragraph");
     whereToAdd.append(newParagraph);
 };
-const requester = fetch("https://restcountries.com/v3.1/name/italy")
-    .then((response) => {
-    return response.json();
-})
-    .then((data) => {
-    paragraphToWebsite(data[0].capital[0], countreSection);
-    paragraphToWebsite(data[0].name.common, countreSection);
-    paragraphToWebsite(data[0].region, countreSection);
-});
+const searchCountry = (event) => {
+    event.preventDefault();
+    const country = countryInput.value;
+    const request = fetch(`https://restcountries.com/v3.1/name/${country}`)
+        .then((response) => {
+        return response.json();
+    })
+        .then((data) => {
+        countreResult.textContent = '';
+        paragraphToWebsite(data[0].capital[0], countreResult);
+        paragraphToWebsite(data[0].name.common, countreResult);
+        paragraphToWebsite(data[0].region, countreResult);
+    });
+    countryInput.value = '';
+};
+searchButtonCountry.addEventListener('click', searchCountry);

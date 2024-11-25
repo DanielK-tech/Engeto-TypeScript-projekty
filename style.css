@@ -235,6 +235,23 @@ input:checked + .slider:before {
 
 .cube img {
     width: 10%;
+} 
+
+.cube h2 {
+    position: relative;
+    display: inline-block;
+} 
+
+.cube h2::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-image: var(--btn-before);
+    filter: blur(10px);
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
 }
 
 @media only screen and (max-width: 600px) {
@@ -620,6 +637,23 @@ input:checked + .slider:before {
 .bank-calculator {
     text-align: center;
     margin-bottom: 10px;
+} 
+
+.bank-calculator h2 {
+    position: relative;
+    display: inline-block;
+} 
+
+.bank-calculator h2::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-image: var(--btn-before);
+    filter: blur(10px);
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
 }
 
 /** input */
@@ -689,4 +723,21 @@ input:checked + .slider:before {
     text-decoration: none;
     color: var(--white-color);
     font-style: italic;
+} 
+/*** Zemičky **/ 
+.countre h2 {
+    position: relative;
+    display: inline-block;
+} 
+
+.countre h2::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-image: var(--btn-before);
+    filter: blur(10px);
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
 }

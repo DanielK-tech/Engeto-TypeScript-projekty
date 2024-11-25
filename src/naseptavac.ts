@@ -299,23 +299,49 @@ const request =
  * ***************************************************************************************************************************************************
  */
     /** Další API **/ 
-const countreSection = document.getElementById('Countre') as HTMLElement;
+const countreSection = document.getElementById('Countre') as HTMLElement;  
+const countreResult = document.querySelector('.country-result') as HTMLElement;
+/* Formulář */ 
+const formular = document.getElementById('CountryForm') as HTMLFormElement; 
+const countryInput = document.getElementById('Country') as HTMLInputElement; 
+const searchButtonCountry = document.getElementById('CountryButton') as HTMLButtonElement;
 
+/** Fce na vyhledávání */ 
 //fce na paragrafy do sekce 
 const paragraphToWebsite = (content: string, whereToAdd: HTMLElement): void => {
     const newParagraph = document.createElement("p")
     newParagraph.textContent = content 
     newParagraph.classList.add("paragraph")
     whereToAdd.append(newParagraph)
+}  
+//
+const searchCountry = (event: Event) => { 
+    event.preventDefault(); 
+    const country = countryInput.value; 
+    const request =
+    fetch(`https://restcountries.com/v3.1/name/${country}`)
+    .then((response) => {
+        return response.json()
+    })
+    .then((data) => { 
+        countreResult.textContent = '';
+        paragraphToWebsite(data[0].capital[0], countreResult)  
+        paragraphToWebsite(data[0].name.common, countreResult)  
+        paragraphToWebsite(data[0].region, countreResult)  
+    }) 
+    countryInput.value = ''; 
 } 
+/******************************************* */ 
+searchButtonCountry.addEventListener('click', searchCountry)
 
-const requester =
-    fetch("https://restcountries.com/v3.1/name/italy")
-        .then((response) => {
-            return response.json()
-        })
-        .then((data) => {
-            paragraphToWebsite(data[0].capital[0], countreSection)  
-            paragraphToWebsite(data[0].name.common, countreSection)  
-            paragraphToWebsite(data[0].region, countreSection)  
-        })
+
+// const requester =
+//     fetch("https://restcountries.com/v3.1/name/italy")
+//         .then((response) => {
+//             return response.json()
+//         })
+//         .then((data) => {
+//             paragraphToWebsite(data[0].capital[0], countreSection)  
+//             paragraphToWebsite(data[0].name.common, countreSection)  
+//             paragraphToWebsite(data[0].region, countreSection)  
+//         })
