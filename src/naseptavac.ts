@@ -210,7 +210,7 @@ window.onload = function () {
         dialog.close(); //zavření dialogu
     });
 }
-
+/************************************************************************************************* */
 //proměnné pro sekci s bankovním účtem 
 const form = document.getElementById('BankForm') as HTMLFormElement;
 const bankInput = document.getElementById('BankInput') as HTMLInputElement;
@@ -250,7 +250,7 @@ dialog.addEventListener('close', () => { //chybí mi nastavení fce na tlačítk
     // result.textContent = `Dialog byl zavřen s returnValue: ${dialog.returnValue}`; 
     // result.textContent = `Dialog byl zavřen s selectedIndex: ${select.selectedIndex}`; 
 
-    result.textContent = `Dialog byl zavřen s value: ${select.value}`; //červená hodnota
+    result.textContent = `Dialog byl zavřen s: ${select.value}`; //červená hodnota
     // https://udn.realityripple.com/docs/Web/API/HTMLDialogElement/returnValue
 }); 
 /***************************************************************************************************************************************************

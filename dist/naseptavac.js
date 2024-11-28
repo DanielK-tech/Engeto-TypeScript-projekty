@@ -200,7 +200,7 @@ openDialogButton.addEventListener('click', () => {
     dialog.showModal();
 });
 dialog.addEventListener('close', () => {
-    result.textContent = `Dialog byl zavřen s value: ${select.value}`;
+    result.textContent = `Dialog byl zavřen s: ${select.value}`;
 });
 const quoteSections = document.getElementById('ApiSatelite');
 const htmlToWebsite = (htmlTag, content, whereToAdd) => {

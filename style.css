@@ -605,6 +605,17 @@ input:checked + .slider:before {
 .dialog-menu {
     display: flex;
     justify-content: space-between;
+} 
+
+.dialog::backdrop {
+  background-image: linear-gradient(
+    45deg,
+    magenta,
+    rebeccapurple,
+    dodgerblue,
+    green
+  );
+  opacity: 0.75;
 }
 
 .dialog-input {
