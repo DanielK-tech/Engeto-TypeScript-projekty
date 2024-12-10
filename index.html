@@ -153,7 +153,7 @@
                 </div>
             </section>
             <!--Dialog-->
-            <dialog id="pinDialog" class="dialog" >
+            <dialog id="pinDialog" class="dialog">
                 <!--tu lze doplnit open (nemusíme použít TS)-->
                 <form method="dialog">
                     <!--metoda dialogu-->
@@ -201,14 +201,45 @@
             <section id="ApiSatelite" class="satelite">
                 <h2>Aktuální poloha družice ISS</h2>
             </section>
-            <!--Sekce o zemích--> 
+            <!--Sekce o zemích-->
             <section id="Countre" class="countre">
-                <h2>Zemičky</h2> 
-                <form id="CountryForm" action=""> 
-                    <input type="text" id="Country" class="country bank-input" placeholder="Země anglicky" />
-                    <button id="CountryButton" class="country-button bank-button">Vyhledat</button>
-                </form> 
+                <h2>Zemičky</h2>
+                <form id="CountryForm" action="">
+                    <input
+                        type="text"
+                        id="Country"
+                        class="country bank-input"
+                        placeholder="Země anglicky"
+                    />
+                    <button
+                        id="CountryButton"
+                        class="country-button bank-button"
+                    >
+                        Vyhledat
+                    </button>
+                </form>
                 <div class="country-result"></div>
+            </section>
+            <!--QR kód-->
+            <section class="qrCode">
+                <form>
+                    <h2 class="qrTitle">Vložte URL nebo text</h2>
+                    <div class="qrContainer">
+                        <input
+                            type="text"
+                            id="qrText"
+                            class="bank-input"
+                            placeholder="Text or URL"
+                        />
+                        <button class="bank-button" id="QRbutton">
+                            Generovat QR kód
+                        </button>
+                    </div>
+                </form>
+                <div id="imageBox" class="Qrboxik">
+                    <h2 class="qrTitle">Váš QR kód</h2>
+                    <img src="" id="qrImage" alt="Qr kodík" class="QrImage"/>
+                </div>
             </section>
         </main>
         <footer><p>© 2024 - Daniel Kolegar. All Rights Reserved.</p></footer>

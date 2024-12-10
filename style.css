@@ -235,12 +235,12 @@ input:checked + .slider:before {
 
 .cube img {
     width: 10%;
-} 
+}
 
 .cube h2 {
     position: relative;
     display: inline-block;
-} 
+}
 
 .cube h2::before {
     content: "";
@@ -605,17 +605,17 @@ input:checked + .slider:before {
 .dialog-menu {
     display: flex;
     justify-content: space-between;
-} 
+}
 
 .dialog::backdrop {
-  background-image: linear-gradient(
-    45deg,
-    magenta,
-    rebeccapurple,
-    dodgerblue,
-    green
-  );
-  opacity: 0.75;
+    background-image: linear-gradient(
+        45deg,
+        magenta,
+        rebeccapurple,
+        dodgerblue,
+        green
+    );
+    opacity: 0.75;
 }
 
 .dialog-input {
@@ -648,12 +648,12 @@ input:checked + .slider:before {
 .bank-calculator {
     text-align: center;
     margin-bottom: 10px;
-} 
+}
 
 .bank-calculator h2 {
     position: relative;
     display: inline-block;
-} 
+}
 
 .bank-calculator h2::before {
     content: "";
@@ -734,12 +734,12 @@ input:checked + .slider:before {
     text-decoration: none;
     color: var(--white-color);
     font-style: italic;
-} 
-/*** Zemičky **/ 
+}
+/*** Zemičky **/
 .countre h2 {
     position: relative;
     display: inline-block;
-} 
+}
 
 .countre h2::before {
     content: "";
@@ -752,3 +752,41 @@ input:checked + .slider:before {
     top: 0;
     z-index: -1;
 }
+
+/*** QR kód **/
+
+.qrCode {
+    display: block; 
+    position: relative;
+    text-align: left; 
+    width: 80%;
+    margin-top: 10px;
+    margin-bottom: 20px;     
+}
+
+.qrTitle {
+    position: relative;
+    text-align: left; 
+    display: inline-block;
+} 
+
+.qrTitle::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-image: var(--btn-before);
+    filter: blur(10px);
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+}  
+
+/** QR obrázek **/ 
+.QrImage{  
+    display: block;
+    margin-top: 10px; 
+    margin-bottom: 10px;
+}
+
+

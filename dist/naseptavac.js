@@ -259,3 +259,18 @@ const searchCountry = (event) => {
     countryInput.value = '';
 };
 searchButtonCountry.addEventListener('click', searchCountry);
+const qrImage = document.getElementById("qrImage");
+const inputText = document.getElementById("qrText");
+const formularQR = document.querySelector("form");
+const QRButton = document.getElementById("QRbutton");
+const generateQR = (event) => {
+    event.preventDefault();
+    if (inputText.value.length > 0) {
+        const url = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${inputText.value}`;
+        const request = fetch(url)
+            .then((response) => {
+            qrImage.src = response.url;
+        });
+    }
+};
+QRButton?.addEventListener('click', generateQR);

@@ -239,7 +239,7 @@ buttonMovements.addEventListener('click', () => {
 //další dialogové okno, tentokráte na tlačítko 
 const dialog = document.getElementById('myDialog') as HTMLDialogElement;
 const openDialogButton = document.getElementById('openDialog') as HTMLButtonElement;
-const result = document.getElementById('result') as HTMLParagraphElement; 
+const result = document.getElementById('result') as HTMLParagraphElement;
 const select = document.getElementById('dialog-try') as HTMLSelectElement;
 
 openDialogButton.addEventListener('click', () => {
@@ -252,96 +252,111 @@ dialog.addEventListener('close', () => { //chybí mi nastavení fce na tlačítk
 
     result.textContent = `Dialog byl zavřen s: ${select.value}`; //červená hodnota
     // https://udn.realityripple.com/docs/Web/API/HTMLDialogElement/returnValue
-}); 
+});
 /***************************************************************************************************************************************************
  * **************************************************************************************************************************************************
  */
 //Přidání API o tom, kde je družice ISS 
-const quoteSections = document.getElementById('ApiSatelite') as HTMLElement; 
+const quoteSections = document.getElementById('ApiSatelite') as HTMLElement;
 
 //fce na přidělání paragrafu do sekce
 const htmlToWebsite = (htmlTag: string, content: string, whereToAdd: HTMLElement): void => {
     const tag = document.createElement(htmlTag)
     tag.textContent = content
     whereToAdd.append(tag)
-} 
+}
 
 //fce na mapy.cz 
 const linkToWebsite = (linkContent: string, urlAddress: string, whereToAdd: HTMLElement): void => {
     const newLink = document.createElement("a")
     newLink.textContent = linkContent
-    newLink.href = urlAddress 
+    newLink.href = urlAddress
     newLink.classList.add("link")
     newLink.target = "_blank"; // Otevře odkaz v novém okně
     whereToAdd.append(newLink)
-} 
+}
 //
 let latitude: number;
 let longitude: number;
-const request = 
+const request =
     fetch('http://api.open-notify.org/iss-now.json') //<= API
-    .then((response) => {  
-        // loader.style.display = 'block';
-        return response.json(); 
-    }) 
-    .then((data) => {  
-        latitude = data.iss_position.latitude
-        longitude = data.iss_position.longitude
-        htmlToWebsite("p", `Zeměpisná Šířka: ${latitude}`, quoteSections)
-        htmlToWebsite("p", `Zeměpisná Délka: ${longitude}`, quoteSections) 
-        const url = `https://mapy.cz/zakladni?source=muni&ds=2&x=${longitude}&y=${latitude}&z=9`;
-        linkToWebsite("Zobrazit na mapy.cz", url, quoteSections)       
-    }) 
-    .finally(() => {
-        // loader.style.display = 'none';
-    }) 
+        .then((response) => {
+            // loader.style.display = 'block';
+            return response.json();
+        })
+        .then((data) => {
+            latitude = data.iss_position.latitude
+            longitude = data.iss_position.longitude
+            htmlToWebsite("p", `Zeměpisná Šířka: ${latitude}`, quoteSections)
+            htmlToWebsite("p", `Zeměpisná Délka: ${longitude}`, quoteSections)
+            const url = `https://mapy.cz/zakladni?source=muni&ds=2&x=${longitude}&y=${latitude}&z=9`;
+            linkToWebsite("Zobrazit na mapy.cz", url, quoteSections)
+        })
+        .finally(() => {
+            // loader.style.display = 'none';
+        })
 /*****************************************************************************************************************************************************
  * ***************************************************************************************************************************************************
  */
-    /** Další API **/ 
-const countreSection = document.getElementById('Countre') as HTMLElement;  
+/** Další API **/
+const countreSection = document.getElementById('Countre') as HTMLElement;
 const countreResult = document.querySelector('.country-result') as HTMLElement;
-/* Formulář */ 
-const formular = document.getElementById('CountryForm') as HTMLFormElement; 
-const countryInput = document.getElementById('Country') as HTMLInputElement; 
+/* Formulář */
+const formular = document.getElementById('CountryForm') as HTMLFormElement;
+const countryInput = document.getElementById('Country') as HTMLInputElement;
 const searchButtonCountry = document.getElementById('CountryButton') as HTMLButtonElement;
 
-/** Fce na vyhledávání */ 
+/** Fce na vyhledávání */
 //fce na paragrafy do sekce 
 const paragraphToWebsite = (content: string, whereToAdd: HTMLElement): void => {
     const newParagraph = document.createElement("p")
-    newParagraph.textContent = content 
+    newParagraph.textContent = content
     newParagraph.classList.add("paragraph")
     whereToAdd.append(newParagraph)
-}  
+}
 //
-const searchCountry = (event: Event) => { 
-    event.preventDefault(); 
-    const country = countryInput.value; 
+const searchCountry = (event: Event) => {
+    event.preventDefault();
+    const country = countryInput.value;
     const request =
-    fetch(`https://restcountries.com/v3.1/name/${country}`)
-    .then((response) => {
-        return response.json()
-    })
-    .then((data) => { 
-        countreResult.textContent = '';
-        paragraphToWebsite(data[0].capital[0], countreResult)  
-        paragraphToWebsite(data[0].name.common, countreResult)  
-        paragraphToWebsite(data[0].region, countreResult)  
-    }) 
-    countryInput.value = ''; 
-} 
-/******************************************* */ 
+        fetch(`https://restcountries.com/v3.1/name/${country}`)
+            .then((response) => {
+                return response.json()
+            })
+            .then((data) => {
+                countreResult.textContent = '';
+                paragraphToWebsite(data[0].capital[0], countreResult)
+                paragraphToWebsite(data[0].name.common, countreResult)
+                paragraphToWebsite(data[0].region, countreResult)
+            })
+    countryInput.value = '';
+}
+/******************************************* */
 searchButtonCountry.addEventListener('click', searchCountry)
 
+/*************************************************************************************************************************
+ * ***********************************************************************************************************************
+ */
 
-// const requester =
-//     fetch("https://restcountries.com/v3.1/name/italy")
-//         .then((response) => {
-//             return response.json()
-//         })
-//         .then((data) => {
-//             paragraphToWebsite(data[0].capital[0], countreSection)  
-//             paragraphToWebsite(data[0].name.common, countreSection)  
-//             paragraphToWebsite(data[0].region, countreSection)  
-//         })
+// QR kód 
+const qrImage = document.getElementById("qrImage") as HTMLImageElement;
+const inputText = document.getElementById("qrText") as HTMLInputElement;
+const formularQR = document.querySelector("form") as HTMLFormElement;
+const QRButton = document.getElementById("QRbutton") as HTMLButtonElement;
+
+
+//fce na generování QR kódu
+const generateQR = (event: Event): void => {
+    event.preventDefault();
+    if (inputText.value.length > 0) {
+        const url = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${inputText.value}`;
+
+        const request =
+            fetch(url)
+                .then((response): void => {
+                    qrImage.src = response.url;
+                })
+    }
+}
+//akce na tlačítko
+QRButton?.addEventListener('click', generateQR);
