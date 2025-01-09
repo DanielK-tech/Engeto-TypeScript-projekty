@@ -359,4 +359,6 @@ const generateQR = (event: Event): void => {
     }
 }
 //akce na tlačítko
-QRButton?.addEventListener('click', generateQR);
+QRButton?.addEventListener('click', generateQR); 
+
+//herní API
