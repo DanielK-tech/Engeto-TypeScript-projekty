@@ -89,3 +89,31 @@ const person1 = {
 console.log(person1.name);
 console.log(person1.age);
 person1.greet();
+class Book {
+    title;
+    author;
+    year;
+    material = "paper";
+    bookNumber;
+    constructor(title, author, year, bookNumber) {
+        this.title = title;
+        this.author = author;
+        this.year = year;
+        this.bookNumber = bookNumber;
+    }
+    bookInfo() {
+        return `${this.title} je kniha, kterou napsal/a ${this.author}. <br> Byla vydána v roce ${this.year}. <br> Knížku najdete pod označením ${this.bookNumber}`;
+    }
+    addToWebsite(tag, whereToAdd) {
+        const htmlTag = document.createElement(tag);
+        htmlTag.innerHTML = this.bookInfo();
+        whereToAdd.append(htmlTag);
+    }
+}
+const bookSection = document.getElementById('books');
+const book1 = new Book("Harry Potter a Kámen mudrců", "J. K. Rowling", 1997, "46fds54a6dfs");
+const book2 = new Book("Harry Potter a Tajemná komnata", "J. K. Rowling", 1998, "789rw9erw978r9");
+const book3 = new Book("Harry Potter a vězeň z Azkabanu", "J. K. Rowling", 1999, "156fd4s65dds6f");
+book1.addToWebsite('p', bookSection);
+book2.addToWebsite('p', bookSection);
+book3.addToWebsite('p', bookSection);

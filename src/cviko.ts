@@ -181,4 +181,62 @@ const person1: Person = {
 // Vypsání všech informací do konzole
 console.log(person1.name);
 console.log(person1.age);
-person1.greet();
+person1.greet(); 
+// 
+
+/* třída 
+
+*/ 
+// Logika kódu
+class Book {
+    public readonly title: string;
+    public readonly author: string;
+    public readonly year: number;
+    public readonly material: string = "paper";
+    private bookNumber: string;
+
+    constructor(title: string, author: string, year: number, bookNumber: string) {
+        this.title = title;
+        this.author = author;
+        this.year = year;
+        this.bookNumber = bookNumber;
+    }
+
+    private bookInfo() {
+        return `${this.title} je kniha, kterou napsal/a ${this.author}. <br> Byla vydána v roce ${this.year}. <br> Knížku najdete pod označením ${this.bookNumber}`;
+    }
+
+    public addToWebsite(tag: string, whereToAdd: HTMLElement) {
+        const htmlTag = document.createElement(tag);
+        htmlTag.innerHTML = this.bookInfo();
+        whereToAdd.append(htmlTag)
+    }
+}
+
+// Použití logiky
+const bookSection = document.getElementById('books') as HTMLElement;
+
+const book1 = new Book(
+    "Harry Potter a Kámen mudrců",
+    "J. K. Rowling",
+    1997,
+    "46fds54a6dfs"
+);
+
+const book2 = new Book(
+    "Harry Potter a Tajemná komnata",
+    "J. K. Rowling",
+    1998,
+    "789rw9erw978r9"
+);
+
+const book3 = new Book(
+    "Harry Potter a vězeň z Azkabanu",
+    "J. K. Rowling",
+    1999,
+    "156fd4s65dds6f"
+);
+
+book1.addToWebsite('p', bookSection);
+book2.addToWebsite('p', bookSection);
+book3.addToWebsite('p', bookSection);
